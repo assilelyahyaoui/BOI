@@ -19,7 +19,10 @@ public class UserManagerFactory {
 	 * @return UserManagerFactory
 	 */
 	public static UserManagerFactory getInstance() {
-		return (userManagerFactory != null) ? userManagerFactory : new UserManagerFactory();
+		if(userManagerFactory == null) {
+			userManagerFactory =  new UserManagerFactory();
+		}
+		return userManagerFactory;
 	}
 	
 	/**

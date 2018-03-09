@@ -1,16 +1,21 @@
 package managers;
 
-import java.util.Observable;
 
 import dao.UserDAO;
 import models.User;
 
-public class UserManager extends Observable{
+public class UserManager{
 
 	/**
 	 * @var UserManager
 	 */
 	private static UserManager userManager;
+	
+	/**
+	 * @var currentUser User
+	 */
+	private User currentUser;
+	
 	/**
 	 * Link between the User model and the database User table.
 	 * @var userDAO UserDAO
@@ -28,7 +33,10 @@ public class UserManager extends Observable{
 	 * Implements the singleton pattern
 	 */
 	public static UserManager getInstance() {
-		return (userManager != null) ? userManager : new UserManager(new UserDAO());
+		if(userManager == null) {
+			userManager = new UserManager(new UserDAO());
+		}
+		return userManager;
 	}
 	
 	/**
@@ -36,18 +44,12 @@ public class UserManager extends Observable{
 	 * @param pseudo
 	 * @param password
 	 */
-	public void login(String pseudo, String password, String role) {
+	public boolean login(String pseudo, String password) {
 		// Get the user with the pseudo given.
-		User user = userDAO.getUserByPseudo(pseudo);
+		 this.currentUser = userDAO.getUserByPseudo(pseudo);
 		// Check credentials
-		boolean loggedIn = user != null && user.getPseudo() == pseudo && user.getPassword() == password && user.getRole() == role ;
+		return this.currentUser != null && this.currentUser.getPseudo() == pseudo && this.currentUser.getPassword() == password;
 		
-		//Notify observer 
-		this.setChanged();
-		if(loggedIn) {
-			this.notifyObservers("LOGGED_IN");
-		}else {
-			this.notifyObservers("BAD_CREDENTIALS");
-		}
+	
 	}
 }
