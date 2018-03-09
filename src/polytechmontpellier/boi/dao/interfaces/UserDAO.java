@@ -6,11 +6,7 @@ import polytechmontpellier.boi.models.User;
 
 public interface UserDAO {
 	
-	/**
-	 * Query the database to get the user by the pseudo given.
-	 * @param pseudo
-	 * @return User
-	 */
+	
 	
 	public ArrayList<User> findAll();
 	public ArrayList<User> findById();
@@ -19,6 +15,11 @@ public interface UserDAO {
 	public boolean updateEmployee(User user);
 	public boolean deleteEmployee(User user);
 
+	/**
+	 * Query the database to get the user by the pseudo given.
+	 * @param pseudo
+	 * @return User
+	 */
 	public User getUserByPseudo(String pseudo);
 	
 }

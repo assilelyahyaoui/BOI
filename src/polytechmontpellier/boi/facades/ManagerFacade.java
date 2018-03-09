@@ -1,14 +1,14 @@
-package polytechmontpellier.boi.businesslogic;
+package polytechmontpellier.boi.facades;
 
-import polytechmontpellier.boi.factories.UserManagerFactory;
+import polytechmontpellier.boi.factories.ManagerFactory;
 import polytechmontpellier.boi.managers.UserManager;
 
-public class Facade{
+public class ManagerFacade{
 	
 	/**
 	 * @var Facade
 	 */
-	private static Facade facade;
+	private static ManagerFacade facade;
 
 	/**
 	 * @var userManager UserManager
@@ -18,16 +18,16 @@ public class Facade{
 	/**
 	 * Constructor 
 	 */
-	private Facade() {	
+	private ManagerFacade() {	
 		//Instantiate the user manager
-		UserManagerFactory userManagerFactory = UserManagerFactory.getInstance();
+		ManagerFactory userManagerFactory = ManagerFactory.getInstance();
 		this.userManager = userManagerFactory.getUserManager(); 
 	}
 	
 
-	public static Facade getInstance() {
+	public static ManagerFacade getInstance() {
 		if(facade == null) {
-			facade =  new Facade();
+			facade =  new ManagerFacade();
 		}
 		
 		return facade;

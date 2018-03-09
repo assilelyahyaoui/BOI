@@ -2,27 +2,27 @@ package polytechmontpellier.boi.factories;
 
 import polytechmontpellier.boi.managers.UserManager;
 
-public class UserManagerFactory {
+public class ManagerFactory {
 
 	/**
-	 * @var userManagerFactory
+	 * @var managerFactory
 	 */
-	private static UserManagerFactory userManagerFactory;
+	private static ManagerFactory managerFactory;
 	
 	/**
 	 * Constructor
 	 */
-	private UserManagerFactory() {}
+	private ManagerFactory() {}
 	
 	/**
 	 * Get the instance of UserManagerFactory singleton
 	 * @return UserManagerFactory
 	 */
-	public static UserManagerFactory getInstance() {
-		if(userManagerFactory == null) {
-			userManagerFactory =  new UserManagerFactory();
+	public static ManagerFactory getInstance() {
+		if(managerFactory == null) {
+			managerFactory =  new ManagerFactory();
 		}
-		return userManagerFactory;
+		return managerFactory;
 	}
 	
 	/**
