@@ -1,6 +1,6 @@
-package factories;
+package polytechmontpellier.boi.factories;
 
-import managers.UserManager;
+import polytechmontpellier.boi.managers.UserManager;
 
 public class UserManagerFactory {
 

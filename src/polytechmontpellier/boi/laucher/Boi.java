@@ -1,3 +1,4 @@
+package polytechmontpellier.boi.laucher;
 
 public class Boi {
 

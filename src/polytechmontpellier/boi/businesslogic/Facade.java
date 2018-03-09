@@ -1,7 +1,7 @@
-package bl;
+package polytechmontpellier.boi.businesslogic;
 
-import factories.UserManagerFactory;
-import managers.UserManager;
+import polytechmontpellier.boi.factories.UserManagerFactory;
+import polytechmontpellier.boi.managers.UserManager;
 
 public class Facade{
 	

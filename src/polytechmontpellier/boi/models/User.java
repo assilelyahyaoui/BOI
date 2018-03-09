@@ -1,4 +1,4 @@
-package models;
+package polytechmontpellier.boi.models;
 
 public class User{
 

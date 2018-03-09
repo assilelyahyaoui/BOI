@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TitledPane alignment="CENTER" animated="false" contentDisplay="CENTER" ellipsisString="BOI" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" text="BET ON IT" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.4">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="489.0" prefWidth="646.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="522.0" layoutY="575.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="170.0" text="Login" textAlignment="CENTER" />
+            <TextField layoutX="473.0" layoutY="319.0" prefHeight="41.0" prefWidth="273.0" promptText="pseudo" />
+            <TextField layoutX="470.0" layoutY="433.0" prefHeight="41.0" prefWidth="273.0" promptText="password" />
+            <ImageView fitHeight="164.0" fitWidth="172.0" layoutX="538.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/boi_logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+  </content>
+   <cursor>
+      <Cursor fx:constant="NONE" />
+   </cursor>
+</TitledPane>

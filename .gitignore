@@ -1,7 +1,9 @@
 # OS X
-
 .DS_Store
 
 # Binary files
+bin/
 
-bin/*.class
+# Eclipse files
+.project
+.classpath

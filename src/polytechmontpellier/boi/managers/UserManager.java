@@ -1,8 +1,8 @@
-package managers;
+package polytechmontpellier.boi.managers;
 
 
-import dao.UserDAO;
-import models.User;
+import polytechmontpellier.boi.dao.interfaces.UserDAO;
+import polytechmontpellier.boi.models.User;
 
 public class UserManager{
 

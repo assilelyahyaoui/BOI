@@ -1,8 +1,8 @@
-package dao;
+package polytechmontpellier.boi.dao.interfaces;
 
 import java.util.ArrayList;
 
-import models.User;
+import polytechmontpellier.boi.models.User;
 
 public interface UserDAO {
 	
