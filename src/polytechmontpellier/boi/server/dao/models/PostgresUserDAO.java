@@ -1,6 +1,5 @@
 package polytechmontpellier.boi.server.dao.models;
 
-import java.sql.Connection;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -72,13 +71,25 @@ public class PostgresUserDAO implements UserDAO{
 	@Override
 	public User getUserByPseudo(String pseudo) {
 		// TODO Auto-generated method stub
-		String query = "SELECT pseudo, password FROM User WHERE pseudo ='";
+		String query = "SELECT u.pseudo, u.password, r.label FROM users u, roles r WHERE u.pseudo ='";
 		query+=pseudo;
 		query+="'";
+		query+= " AND u.role_id = r.id";
 		
 		ResultSet users = this.excuteQuery(query);
+		User user = null;
+		try {
+			ResultSetMetaData rsmd = users.getMetaData();
+			  users.next();
+			  user = new User(users.getString(1),users.getString(2), users.getString(3));
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		
-		return null;
+		
+		
+		return user;
 	}
 	
 	private ResultSet excuteQuery(String query) {

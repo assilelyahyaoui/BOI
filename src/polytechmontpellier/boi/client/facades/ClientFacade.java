@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.json.simple.JSONObject;
+
 import com.lloseng.ocsf.client.ObservableClient;
 
 import polytechmontpellier.boi.client.BOIGui;
@@ -75,7 +77,19 @@ public class ClientFacade implements Observer{
 	 */
 	public void login(String pseudo, String password) {		
 		try {
-			this.observableClient.sendToServer("#login || "+pseudo+ " || "+ password);
+			JSONObject json = new JSONObject();
+			
+			try {
+				json.put("password",password);
+				json.put("pseudo", pseudo);
+				json.put("action", "LOGIN");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			this.observableClient.sendToServer(json.toString());
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

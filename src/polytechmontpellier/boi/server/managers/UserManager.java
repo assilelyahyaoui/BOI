@@ -50,7 +50,7 @@ public class UserManager{
 		// Get the user with the pseudo given.
 		 this.currentUser = userDAO.getUserByPseudo(pseudo);
 		// Check credentials
-		return this.currentUser != null && this.currentUser.getPseudo() == pseudo && this.currentUser.getPassword() == password;
+		return this.currentUser != null && this.currentUser.getPseudo().equals(pseudo) && this.currentUser.getPassword().equals(password);
 		
 	
 	}

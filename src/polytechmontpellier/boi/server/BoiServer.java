@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import com.lloseng.ocsf.server.ConnectionToClient;
 import com.lloseng.ocsf.server.ObservableOriginatorServer;
 import com.lloseng.ocsf.server.OriginatorMessage;
@@ -58,26 +62,27 @@ public class BoiServer implements Observer{
 	 * @throws IOException 
 	 */
 	private void handleMessageFromClient(Object msg, ConnectionToClient client) throws IOException {
-		String message = (String) msg;
-		//
-		if(message.startsWith("#login")) { 
-			// User wants to login
-			if(this.facade.login(message.split("||")[1], message.split("||")[2])) {
-				//credentials are good.
-				client.setInfo("pseudo", message.split("||")[1]);
-				client.setInfo("password", message.split("||")[2]);
-				client.sendToClient("LOGGED_IN");
-			}else {
-				client.sendToClient("BAD_CREDENTIALS");
-			}
+		JSONParser parser = new JSONParser();
+		
+		try {
+			JSONObject data = (JSONObject) parser.parse((String) msg);
 
-		}else if(message.startsWith("#signin")) {
-			// create a new user.
-		}else if(client.getInfo("pseudo") != null) {
-			// user is connected
-		}else {
-			// user isn't logged in.
-			client.sendToClient("UNAUTHORIZED");
+			if(data.get("action").equals("LOGIN")) { 
+				// User wants to login
+				if(this.facade.login((String)data.get("pseudo"),(String)data.get("password"))) {
+					//credentials are good.
+					client.setInfo("pseudo", data.get("pseudo"));
+					client.setInfo("password",data.get("password"));
+					client.sendToClient("LOGGED_IN");
+				}else {
+					client.sendToClient("BAD_CREDENTIALS");
+				}
+
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Erreur JSON");
+			e.printStackTrace();
 		}
 	}
 	
