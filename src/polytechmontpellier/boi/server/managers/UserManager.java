@@ -2,7 +2,7 @@ package polytechmontpellier.boi.server.managers;
 
 
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
-import polytechmontpellier.boi.server.facades.DAOFactoryFacade;
+import polytechmontpellier.boi.server.facades.DAOFacade;
 import polytechmontpellier.boi.server.models.User;
 
 public class UserManager{
@@ -27,7 +27,7 @@ public class UserManager{
 	 * Constructor
 	 */
 	private UserManager() {
-		this.userDAO = DAOFactoryFacade.getInstance().getUserDAO();
+		this.userDAO = DAOFacade.getInstance().getUserDAO();
 	}
 	
 	public static UserManager getInstance() {

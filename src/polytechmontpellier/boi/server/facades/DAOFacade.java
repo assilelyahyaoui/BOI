@@ -4,34 +4,33 @@ package polytechmontpellier.boi.server.facades;
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
 import polytechmontpellier.boi.server.factories.AbstractDAOFactory;
 import polytechmontpellier.boi.server.factories.PostgresDAOFactory;
-import polytechmontpellier.boi.server.managers.UserManager;
 
-public class DAOFactoryFacade{
+public class DAOFacade{
 
 	/**
 	 * @var Facade
 	 */
-	private static DAOFactoryFacade facade;
+	private static DAOFacade facade;
 
 	/**
 	 * Constructor 
 	 */
-	private DAOFactoryFacade() {	}
+	private DAOFacade() {	}
 	
 	/**
 	 * Singleton static access.
 	 * @return
 	 */
-	public static DAOFactoryFacade getInstance() {
+	public static DAOFacade getInstance() {
 		if(facade == null) {
-			facade =  new DAOFactoryFacade();
+			facade =  new DAOFacade();
 		}
 		return facade;
 	}
 	
 	/**
 	 * Handle the persistent layer business logic
-	 * @return
+	 * @return the DAOFactory of the good persistent layer
 	 */
 	private AbstractDAOFactory getDAOFactory() {
 		// if it is a postgres db
