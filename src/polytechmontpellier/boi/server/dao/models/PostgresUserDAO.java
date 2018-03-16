@@ -79,13 +79,10 @@ public class PostgresUserDAO implements UserDAO{
 		ResultSet users = this.excuteQuery(query);
 		User user = null;
 		try {
-			ResultSetMetaData rsmd = users.getMetaData();
-			  users.next();
-			  user = new User(users.getString(1),users.getString(2), users.getString(3));
+			users.next();
+			user = new User(users.getString(1),users.getString(2), users.getString(3));
 		}
 		catch(Exception e) {}
-		
-		
 		
 		return user;
 	}

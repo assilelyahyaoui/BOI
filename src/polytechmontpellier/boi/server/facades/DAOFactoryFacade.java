@@ -2,32 +2,45 @@ package polytechmontpellier.boi.server.facades;
 
 
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
+import polytechmontpellier.boi.server.factories.AbstractDAOFactory;
 import polytechmontpellier.boi.server.factories.PostgresDAOFactory;
+import polytechmontpellier.boi.server.managers.UserManager;
 
 public class DAOFactoryFacade{
+
 	/**
-	 * @var DAOFactory
+	 * @var Facade
 	 */
-	private static DAOFactoryFacade DAOFactory;
+	private static DAOFactoryFacade facade;
+
+	/**
+	 * Constructor 
+	 */
+	private DAOFactoryFacade() {	}
 	
 	/**
-	 * Constructor
-	 */
-	private DAOFactoryFacade() {}
-	
-	/**
-	 * @return DAOFactory
+	 * Singleton static access.
+	 * @return
 	 */
 	public static DAOFactoryFacade getInstance() {
-		if(DAOFactory == null) {
-			DAOFactory = new DAOFactoryFacade();
+		if(facade == null) {
+			facade =  new DAOFactoryFacade();
 		}
-		return DAOFactory;
+		return facade;
+	}
+	
+	/**
+	 * Handle the persistent layer business logic
+	 * @return
+	 */
+	private AbstractDAOFactory getDAOFactory() {
+		// if it is a postgres db
+		return PostgresDAOFactory.getInstance();
 	}
 	
 	public UserDAO getUserDAO() {
-		// TODO Auto-generated method stub	
-		return PostgresDAOFactory.getInstance().getUserDAO();
+		return this.getDAOFactory().getUserDAO();
 	}
+	
 	
 }

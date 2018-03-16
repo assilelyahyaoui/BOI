@@ -1,6 +1,5 @@
 package polytechmontpellier.boi.server.facades;
 
-import polytechmontpellier.boi.server.factories.ManagerFactory;
 import polytechmontpellier.boi.server.managers.UserManager;
 
 public class ServerFacade{
@@ -20,8 +19,7 @@ public class ServerFacade{
 	 */
 	private ServerFacade() {	
 		//Instantiate the user manager
-		ManagerFactory userManagerFactory = ManagerFactory.getInstance();
-		this.userManager = userManagerFactory.getUserManager(); 
+		this.userManager = UserManager.getInstance(); 
 	}
 	
 

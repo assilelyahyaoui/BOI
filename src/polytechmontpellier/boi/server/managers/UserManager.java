@@ -8,7 +8,7 @@ import polytechmontpellier.boi.server.models.User;
 public class UserManager{
 
 	/**
-	 * @var UserManager
+	 * @var userManager UserManager
 	 */
 	private static UserManager userManager;
 	
@@ -26,17 +26,13 @@ public class UserManager{
 	/**
 	 * Constructor
 	 */
-	private UserManager(UserDAO userDAO) {
-		this.userDAO = userDAO;
+	private UserManager() {
+		this.userDAO = DAOFactoryFacade.getInstance().getUserDAO();
 	}
 	
-	/**
-	 * Implements the singleton pattern
-	 */
 	public static UserManager getInstance() {
 		if(userManager == null) {
-			
-			userManager = new UserManager(DAOFactoryFacade.getInstance().getUserDAO());
+			userManager =  new UserManager();
 		}
 		return userManager;
 	}
