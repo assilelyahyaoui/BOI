@@ -83,9 +83,7 @@ public class PostgresUserDAO implements UserDAO{
 			  users.next();
 			  user = new User(users.getString(1),users.getString(2), users.getString(3));
 		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		catch(Exception e) {}
 		
 		
 		

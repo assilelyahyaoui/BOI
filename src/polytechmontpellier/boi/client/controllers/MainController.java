@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -54,10 +55,20 @@ public class MainController implements Initializable, BOIGui{
 		// TODO Auto-generated method stub
 		if(action.equals("LOGGED_IN")) {
 			// Change to main scene
+			System.out.println("Logged In");
+			
 		}else if(action.equals("BAD_CREDENTIALS")) {
 			//display error message
+			Platform.runLater(new Runnable(){
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					loginController.showMessage("BAD CREDENTIALS");
+
+				}
+			});
 		}
-		System.out.println(action);
 		
 	}
 
