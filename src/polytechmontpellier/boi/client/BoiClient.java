@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import polytechmontpellier.boi.client.controllers.MainController;
-import polytechmontpellier.boi.client.facades.ClientFacade;
 
 public class BoiClient extends Application{
 

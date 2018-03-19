@@ -6,7 +6,6 @@ import java.util.Observer;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import com.lloseng.ocsf.server.ConnectionToClient;
 import com.lloseng.ocsf.server.ObservableOriginatorServer;
@@ -14,7 +13,13 @@ import com.lloseng.ocsf.server.OriginatorMessage;
 
 import polytechmontpellier.boi.server.facades.ServerFacade;
 
+@SuppressWarnings("deprecation")
 public class BoiServer implements Observer{
+	
+	/**
+	 * Le fichier de configuration.
+	 */
+	public final static String PROPERTIES_FILE = "configuration/configuration.properties";
 
 	/**
 	 * @var DEFAULT_PORT int
