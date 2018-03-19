@@ -1,6 +1,7 @@
 package polytechmontpellier.boi.server.managers;
 
 
+import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
 import polytechmontpellier.boi.server.facades.DAOFacade;
 import polytechmontpellier.boi.server.models.User;
@@ -21,7 +22,7 @@ public class UserManager{
 	 * Link between the User model and the database User table.
 	 * @var userDAO UserDAO
 	 */
-	private UserDAO userDAO;
+	private DAO<User> userDAO;
 	
 	/**
 	 * Constructor
@@ -44,7 +45,7 @@ public class UserManager{
 	 */
 	public boolean login(String pseudo, String password) {
 		// Get the user with the pseudo given.
-		 this.currentUser = userDAO.getUserByPseudo(pseudo);
+		 this.currentUser = ((UserDAO) userDAO).getUserByPseudo(pseudo);
 		// Check credentials
 		return this.currentUser != null && this.currentUser.getPseudo().equals(pseudo) && this.currentUser.getPassword().equals(password);
 		
