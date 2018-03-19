@@ -1,9 +1,10 @@
 package polytechmontpellier.boi.server.facades;
 
 
-import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
+import polytechmontpellier.boi.server.dao.DAO;
+import polytechmontpellier.boi.server.dao.FactoryType;
 import polytechmontpellier.boi.server.factories.AbstractDAOFactory;
-import polytechmontpellier.boi.server.factories.PostgresDAOFactory;
+import polytechmontpellier.boi.server.models.User;
 
 public class DAOFacade{
 
@@ -31,15 +32,21 @@ public class DAOFacade{
 	/**
 	 * Handle the persistent layer business logic
 	 * @return the DAOFactory of the good persistent layer
+	 * @throws ClassNotFoundException 
 	 */
-	private AbstractDAOFactory getDAOFactory() {
-		// if it is a postgres db
-		return PostgresDAOFactory.getInstance();
+	private AbstractDAOFactory getDAOFactory() throws ClassNotFoundException {
+		return AbstractDAOFactory.getFactory(FactoryType.POSTGRES_DAO);
 	}
 	
-	public UserDAO getUserDAO() {
-		return this.getDAOFactory().getUserDAO();
+	@SuppressWarnings("unchecked")
+	public DAO<User> getUserDAO() {
+		DAO<User> userDAO = null;
+		try {
+			userDAO = this.getDAOFactory().getUserDAO();
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return userDAO;
 	}
-	
-	
 }

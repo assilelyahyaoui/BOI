@@ -3,67 +3,51 @@ package polytechmontpellier.boi.server.dao.models;
 import java.sql.*;
 import java.util.ArrayList;
 
+import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
+import polytechmontpellier.boi.server.factories.PostgreSQLConnection;
 import polytechmontpellier.boi.server.models.User;
 
-public class PostgresUserDAO implements UserDAO{
-
-	/**
-	 * @var postgresUserDAO
-	 */
-	private static PostgresUserDAO postgresUserDAO;
+public class PostgresUserDAO extends DAO<User> implements UserDAO {
 	
 	/**
 	 * @var pgConnection
 	 */
 	private Connection pgConnection;
+	
 	/**
 	 * Constructor
 	 */
-	private PostgresUserDAO(Connection connection) {
-		this.pgConnection = connection;
+	public PostgresUserDAO() {
+		this.pgConnection = PostgreSQLConnection.getConnection();
 	}
 	
-	public static PostgresUserDAO getInstance(Connection connection) {
-		if(postgresUserDAO == null) {
-			postgresUserDAO = new PostgresUserDAO(connection);
-		}
-		return postgresUserDAO;
-	}
-	
-	
-	@Override
 	public ArrayList<User> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public ArrayList<User> findById() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public ArrayList<User> findByName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public boolean insertEmployee(User user) {
+	public User insert(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean update(User user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
-	public boolean updateEmployee(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean deleteEmployee(User user) {
+	public boolean delete(User user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -98,6 +82,5 @@ public class PostgresUserDAO implements UserDAO{
         }
         return null;
 	}
-
 
 }
