@@ -4,6 +4,7 @@ package polytechmontpellier.boi.server.facades;
 import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.FactoryType;
 import polytechmontpellier.boi.server.factories.AbstractDAOFactory;
+import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.User;
 
 public class DAOFacade{
@@ -48,5 +49,16 @@ public class DAOFacade{
 			e.printStackTrace();
 		}
 		return userDAO;
+	}
+	
+	public DAO<Bet> getBetDAO() {
+		DAO<Bet> betDAO = null;
+		try {
+			betDAO = this.getDAOFactory().getBetDAO();
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return betDAO;
 	}
 }
