@@ -115,6 +115,23 @@ public class BoiServer implements Observer{
 			System.out.println("Erreur JSON");
 			e.printStackTrace();
 		}
+		
+		try {
+			JSONObject data = (JSONObject) parser.parse((String) msg);
+
+			if(data.get("action").equals("DISPLAY_ALL_SHARPS")) { 
+				client.sendToClient("DISPLAY_ALL_SHARPS");
+
+				}else {
+					client.sendToClient("BAD_CREDENTIALS");
+				}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Erreur JSON");
+			e.printStackTrace();
+		}
+		
 	}
 	
 	/**

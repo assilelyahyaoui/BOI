@@ -14,6 +14,8 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 	 * @var pgConnection
 	 */
 	private Connection pgConnection;
+	private ArrayList<User> sharpsList;
+
 	
 	/**
 	 * Constructor
@@ -71,6 +73,8 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		return user;
 	}
 	
+		
+	
 	private ResultSet excuteQuery(String query) {
 		try {
             Statement state = this.pgConnection.createStatement();
@@ -81,6 +85,31 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
             e.printStackTrace();
         }
         return null;
+	}
+
+	@Override
+	public ArrayList<User> findAllFollowedSharps(String pseudo) {
+		// TODO Auto-generated method stub
+		String query = "SELECT * FROM Users u WHERE u.userID IN (SELECT f.sharpID FROM Users u1 , Follow f WHERE u1.userID = f.bettorID AND u1.pseudo = '";
+		query+=pseudo;
+		query+="'";
+
+		
+		ResultSet sharps = this.excuteQuery(query);
+		sharpsList = null; 
+		try {
+			while( sharps.next()) {
+				System.out.println("sharpList : " ); 
+				System.out.println(sharps);
+				sharpsList.add((User) sharps); 
+			}
+				 
+			} catch(Exception e) {e.printStackTrace();}
+		
+		System.out.println("sharpsList");
+		System.out.println(sharpsList);
+		
+		return sharpsList ; 
 	}
 
 }

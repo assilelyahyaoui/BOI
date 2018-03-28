@@ -1,6 +1,10 @@
 package polytechmontpellier.boi.server.managers;
 
 
+import java.util.ArrayList;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
 import polytechmontpellier.boi.server.facades.DAOFacade;
@@ -23,6 +27,8 @@ public class UserManager{
 	 * @var userDAO UserDAO
 	 */
 	private DAO<User> userDAO;
+	
+
 	
 	/**
 	 * Constructor
@@ -50,5 +56,12 @@ public class UserManager{
 		return this.currentUser != null && this.currentUser.getPseudo().equals(pseudo) && this.currentUser.getPassword().equals(password);
 		
 	
+	}
+	
+	public ArrayList<User> displayAllFollowedSharps() {
+		ArrayList<User> followedSharpList = ((UserDAO) userDAO).findAllFollowedSharps(this.currentUser.getPseudo());
+		
+		return followedSharpList ; 
+				
 	}
 }
