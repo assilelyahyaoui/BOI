@@ -71,6 +71,15 @@ public class ClientFacade implements Observer{
 	}
 	
 	/**
+	 * Only way to get an instance of client facade
+	 * @return ClientFacade
+	 */
+	public static ClientFacade getInstance(){
+		
+		return facade;
+	}
+	
+	/**
 	 * Delegate the login request.
 	 * @param pseudo
 	 * @param password
@@ -111,7 +120,24 @@ public class ClientFacade implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		this.handleMessageFromServer((String) arg);
+		if(arg instanceof Exception){
+			System.out.println("Exception");
+			((Exception) arg).printStackTrace();
+		}else{
+			String msg = (String) arg;
+			
+		    if(msg.equals(ObservableClient.CONNECTION_CLOSED)){
+		    	
+				System.out.println("ConnectionClosed");
+		    	
+		    }else if(msg.equals(ObservableClient.CONNECTION_ESTABLISHED)){
+		    	
+				System.out.println("Conenection established");
+		    	
+		    }else{
+				this.handleMessageFromServer((String) arg);
+		    }
+		}
 				
 	}
 

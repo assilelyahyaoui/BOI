@@ -10,9 +10,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<!--  fx:controller="polytechmontpellier.boi.client.controllers.LoginController" -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytechmontpellier.boi.client.controllers.LoginController">
          <children>
             <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="522.0" layoutY="575.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="54.0" prefWidth="170.0" text="Login" textAlignment="CENTER" />
             <TextField fx:id="pseudo" layoutX="470.0" layoutY="351.0" prefHeight="41.0" prefWidth="273.0" promptText="pseudo" />
