@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -41,25 +43,23 @@ public class BetsController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		bets.setEditable(false);
-		ClientFacade.getInstance().getBets();
 	}
 	
 	public void fillTableView(Object data) {
-		System.out.println("fill tableView");
-		JSONArray array = (JSONArray) data;
 		
+		JSONArray array = (JSONArray)  data;
+			
 		ObservableList<BetCell> betCells = FXCollections.observableArrayList();
 		for(Object o : array) {
 			JSONObject obj = (JSONObject) o;
 			try {
-				BetCell betCell = new BetCell((StringProperty) obj.get("team"), (StringProperty)obj.get("pronostic"),(StringProperty) obj.get("pseudo"), (StringProperty)obj.get("sport"));
+				BetCell betCell = new BetCell((String)obj.get("team"),(String)obj.get("pronostic"),(String) obj.get("pseudo"),(String)obj.get("sport"));
 				betCells.add(betCell);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			
+				
 		}
-		
 		sport.setCellValueFactory(
 			   new PropertyValueFactory<BetCell,String>("sport")
 		);
@@ -72,8 +72,11 @@ public class BetsController implements Initializable {
 		pronostic.setCellValueFactory(
 		    new PropertyValueFactory<BetCell,String>("pronostic")
 		);
+			
 		
 		bets.setItems(betCells);
+		bets.getColumns().addAll(team, sport, pseudo,pronostic);
+		
 	}
 	
 	

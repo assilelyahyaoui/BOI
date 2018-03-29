@@ -93,7 +93,8 @@ public class RootViewController implements Initializable, BOIGui{
 		this.setButtonListener();
 		
 		// Register RootViewController as the handler of the app UI.
-		this.facade = ClientFacade.getInstance(this);
+		this.facade = ClientFacade.getInstance();
+		this.facade.setGUI(this);
 	}
 	
 	public void hideElements() {
@@ -111,75 +112,59 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void setLoadersAndControllers() {
 		this.betsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
-		this.betsCtrl = betsLoader.getController();
+		try {
+			this.betsNode = (Node) this.betsLoader.load();
+			this.betsCtrl = betsLoader.getController();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
-		this.gamesCtrl = gamesLoader.getController();
+		try {
+			this.gamesNode = (Node) this.gamesLoader.load();
+			this.gamesCtrl = gamesLoader.getController();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
-		this.resultsCtrl = resultsLoader.getController();
+		try {
+			this.resultsNode = (Node) this.resultsLoader.load();
+			this.resultsCtrl = resultsLoader.getController();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Sharps.fxml"));
-		this.sharpsCtrl = sharpsLoader.getController();
+		try {
+			this.sharpsNode = (Node) this.sharpsLoader.load();
+			this.sharpsCtrl = sharpsLoader.getController();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void displayBets() {
-		try {
-			if(this.betsNode == null) {
-				this.betsNode = (Node) betsLoader.load();
-			}
-			container.getChildren().clear();
-			container.getChildren().setAll(this.betsNode);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
+		container.getChildren().clear();
+		container.getChildren().setAll(this.betsNode);
+		this.facade.getBets();
 	}
 	
 	public void displaySharps() {
-		try {
-			if(this.sharpsNode == null) {
-				this.sharpsNode = (Node) sharpsLoader.load();
-			}
-			container.getChildren().clear();
-			container.getChildren().setAll(this.sharpsNode);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
+		container.getChildren().clear();
+		container.getChildren().setAll(this.sharpsNode);
 	}
 	
 	public void displayGames() {
-		try {
-			if(this.gamesNode == null) {
-				this.gamesNode = (Node) gamesLoader.load();
-			}
-			container.getChildren().clear();
-			container.getChildren().setAll(this.gamesNode);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		
+		container.getChildren().clear();
+		container.getChildren().setAll(this.gamesNode);
 	}
 	
 	public void displayResults() {
-		try {
-			if(this.resultsNode == null) {
-				this.resultsNode = (Node) resultsLoader.load();
-			}
-			container.getChildren().clear();
-			container.getChildren().setAll(this.resultsNode);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		
+		container.getChildren().clear();
+		container.getChildren().setAll(this.resultsNode);
 	}
 	
 	public void setButtonListener() {
@@ -198,7 +183,6 @@ public class RootViewController implements Initializable, BOIGui{
 			@Override
 			public void handle(MouseEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("test");
 				displaySharps();
 			}	
 		});
@@ -249,7 +233,6 @@ public class RootViewController implements Initializable, BOIGui{
 					text.backgroundProperty().set(new Background(new BackgroundFill(Color.web("#f44242"), null, null)));
 
 				}else if(action.equals("GET_BETS")) {
-					System.out.println((String) data);
 					betsCtrl.fillTableView(data);
 				}
 			}

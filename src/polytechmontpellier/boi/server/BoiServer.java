@@ -84,6 +84,7 @@ public class BoiServer implements Observer{
 					client.sendToClient("LOGGED_IN");
 				}else {
 					client.sendToClient("BAD_CREDENTIALS");
+				
 				}
 
 			}else if(data.get("action").equals("GET_BETS")) {

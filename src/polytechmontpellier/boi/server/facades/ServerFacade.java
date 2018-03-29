@@ -29,6 +29,7 @@ public class ServerFacade{
 	private ServerFacade() {	
 		//Instantiate the user manager
 		this.userManager = UserManager.getInstance(); 
+		this.betManager = BetManager.getInstance();
 	}
 	
 

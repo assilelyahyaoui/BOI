@@ -45,7 +45,7 @@ public class ClientFacade implements Observer{
 	/**
 	 * Constructor 
 	 */
-	private ClientFacade(BOIGui boiGui) {	
+	private ClientFacade() {	
 		//Instantiate the user manager
 		this.observableClient = new ObservableClient(DEFAULT_HOST,DEFAULT_PORT);
 		this.observableClient.addObserver(this);
@@ -65,22 +65,18 @@ public class ClientFacade implements Observer{
 	 * Only way to get an instance of client facade
 	 * @return ClientFacade
 	 */
-	public static ClientFacade getInstance(BOIGui gui) {
+	public static ClientFacade getInstance() {
 		if(facade == null) {
-			facade =  new ClientFacade(gui);
+			facade =  new ClientFacade();
 		}
 		
 		return facade;
 	}
 	
-	/**
-	 * Only way to get an instance of client facade
-	 * @return ClientFacade
-	 */
-	public static ClientFacade getInstance(){
-		
-		return facade;
+	public void setGUI(BOIGui gui) {
+		this.boiGui = gui;
 	}
+	
 	
 	/**
 	 * Delegate the login request.
@@ -109,12 +105,10 @@ public class ClientFacade implements Observer{
 	}
 	
 	public void getBets(){
-		System.out.println("sendToserver");
 		JSONObject json = new JSONObject();
 		try {
 			json.put("action", "GET_BETS");
-			
-			 this.observableClient.sendToServer(json.toString());
+			this.observableClient.sendToServer(json.toString());
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -128,7 +122,6 @@ public class ClientFacade implements Observer{
 	 */
 	private void handleMessageFromServer(String msg) {
 		JSONParser parser = new JSONParser();
-		System.out.println(msg);
 		try {
 			JSONObject json = (JSONObject) parser.parse(msg);
 			this.boiGui.updateGUI((String) json.get("action"), json.get("data"));
