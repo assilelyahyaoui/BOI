@@ -116,11 +116,11 @@ public class BoiServer implements Observer{
 			System.out.println("Erreur JSON");
 			e.printStackTrace();
 		}
-		
-		/*try {
+		System.out.println("boiServer");
+		try {
 			JSONObject data = (JSONObject) parser.parse((String) msg);
 
-			if(facade data.get("action").equals("DISPLAY_ALL_SHARPS")) { 
+			if( data.get("action").equals("DISPLAY_ALL_SHARPS")) { 
 				client.sendToClient("DISPLAY_ALL_SHARPS");
 
 				}else {
@@ -131,7 +131,7 @@ public class BoiServer implements Observer{
 			// TODO Auto-generated catch block
 			System.out.println("Erreur JSON");
 			e.printStackTrace();
-		}*/
+		}
 		
 	}
 	

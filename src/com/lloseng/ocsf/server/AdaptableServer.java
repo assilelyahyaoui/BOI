@@ -124,6 +124,7 @@ class AdaptableServer extends AbstractServer
   final protected void handleMessageFromClient(Object msg,
                                          ConnectionToClient client)
   {
+	  System.out.println("AdaptableServer" + msg);
     server.handleMessageFromClient(msg, client);
   }
 }

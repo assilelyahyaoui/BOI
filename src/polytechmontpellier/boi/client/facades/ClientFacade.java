@@ -120,6 +120,7 @@ public class ClientFacade implements Observer{
 			JSONObject json = new JSONObject();
 			json.put("action","DISPLAY_ALL_SHARPS" ); 
 			this.observableClient.sendToServer(json.toString());
+			System.out.println("ClientFacade" + json);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
