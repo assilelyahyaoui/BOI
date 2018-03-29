@@ -16,6 +16,11 @@ public class SharpCell {
 		this.setAccuracy(accuracy);
 
 	}
+	
+	public SharpCell(StringProperty username) {
+		this.setUsername(username);
+
+	}
 
 	public StringProperty getUsername() {
 		return username;

@@ -14,7 +14,7 @@ import com.lloseng.ocsf.server.ObservableOriginatorServer;
 import com.lloseng.ocsf.server.OriginatorMessage;
 
 import polytechmontpellier.boi.server.facades.ServerFacade;
-import polytechmontpellier.boi.server.models.Bet;
+import polytechmontpellier.boi.server.models.*;
 
 @SuppressWarnings("deprecation")
 public class BoiServer implements Observer{
@@ -109,18 +109,41 @@ public class BoiServer implements Observer{
 					e.printStackTrace();
 				}
 				
+			}else if(data.get("action").equals("DISPLAY_ALL_SHARPS")) {
+				List<User> sharps = facade.findAllFollowedSharps(); 
+				try {
+					System.out.println("boiServer TTTT " + msg);
+
+				
+					JSONObject json = new JSONObject();
+					json.put("action", "DISPLAY_ALL_SHARPS");
+					JSONArray array = new JSONArray();
+					for(User s : sharps) {
+						JSONObject j = new JSONObject();
+						j.put("pseudo", s.getPseudo());
+						System.out.println("boiServer handlemsgclient pseudo " + msg);
+						array.add(j);
+					}
+					json.put("data", array);
+					
+					client.sendToClient(json.toString());
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			this.facade.displayAllFollowedSharps(); 
-			System.out.println("Erreur JSON");
-			e.printStackTrace();
-		}
-		System.out.println("boiServer");
+		
+/*		System.out.println("boiServer TTTT " + msg);
 		try {
 			JSONObject data = (JSONObject) parser.parse((String) msg);
-
+			System.out.println("boiServer avant le if  " + data.get("action").equals("DISPLAY_ALL_SHARPS"));
+			
 			if( data.get("action").equals("DISPLAY_ALL_SHARPS")) { 
+					System.out.println("boiserverdansleif");
+					List<User> sharp = facade.findAllFollowedSharps(); 
 				client.sendToClient("DISPLAY_ALL_SHARPS");
 
 				}else {
@@ -131,8 +154,9 @@ public class BoiServer implements Observer{
 			// TODO Auto-generated catch block
 			System.out.println("Erreur JSON");
 			e.printStackTrace();
-		}
+		}*/
 		
+	
 	}
 	
 	/**

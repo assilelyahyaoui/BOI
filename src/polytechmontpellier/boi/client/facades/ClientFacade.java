@@ -120,7 +120,7 @@ public class ClientFacade implements Observer{
 			JSONObject json = new JSONObject();
 			json.put("action","DISPLAY_ALL_SHARPS" ); 
 			this.observableClient.sendToServer(json.toString());
-			System.out.println("ClientFacade" + json);
+			System.out.println("ClientFacade " + json);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -134,6 +134,8 @@ public class ClientFacade implements Observer{
 	 */
 	private void handleMessageFromServer(String msg) {
 		JSONParser parser = new JSONParser();
+		System.out.println("ClientFacade hndlemsg");
+		System.out.println(msg);
 		try {
 			JSONObject json = (JSONObject) parser.parse(msg);
 			this.boiGui.updateGUI((String) json.get("action"), json.get("data"));

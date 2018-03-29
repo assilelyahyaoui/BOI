@@ -61,9 +61,9 @@ public class ServerFacade{
 		return this.betManager.getBets();
 	}
 	
-	public ArrayList<User> displayAllFollowedSharps() {
-		
-		return this.userManager.displayAllFollowedSharps();	
+	public List<User> findAllFollowedSharps() {
+		System.out.println("Server Facade display all sharps ");
+		return this.userManager.findAllFollowedSharps();	
 	}
 
 }

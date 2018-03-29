@@ -1,6 +1,7 @@
 package polytechmontpellier.boi.server.dao.interfaces;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import polytechmontpellier.boi.server.models.User;
 
@@ -12,7 +13,7 @@ public interface UserDAO {
 	 * @return User
 	 */
 	public User getUserByPseudo(String pseudo);
-	public ArrayList<User> findAllFollowedSharps(String pseudo);
+	public List<User> findAllFollowedSharps(String pseudo);
 	
 	
 }
