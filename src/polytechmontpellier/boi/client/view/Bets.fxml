@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="label" layoutX="239.0" layoutY="192.0" text="Coucou depuis bets" />
+      <Label fx:id="label" layoutX="536.0" layoutY="94.0" text="Bet List" textAlignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      <TableView fx:id="bets" layoutX="208.0" layoutY="161.0" prefHeight="634.0" prefWidth="846.0">
+        <columns>
+            <TableColumn prefWidth="201.72042846679688" text="Team1" />
+            <TableColumn minWidth="0.0" prefWidth="209.30133056640625" text="Team2" />
+          <TableColumn prefWidth="211.69866943359375" text="Bet" />
+            <TableColumn prefWidth="223.73663330078125" text="Percentage" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

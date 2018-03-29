@@ -56,6 +56,7 @@ public class ClientFacade implements Observer{
 			e.printStackTrace();
 		}
 		this.boiGui = boiGui;
+		
 	}
 	
 	/**
@@ -101,6 +102,18 @@ public class ClientFacade implements Observer{
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void getBets(){
+		JSONObject json = new JSONObject();
+		try {
+			json.put("action", "GET_BETS");
+			
+			 this.observableClient.sendToServer(json.toString());
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

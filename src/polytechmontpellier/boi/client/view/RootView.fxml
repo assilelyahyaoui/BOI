@@ -7,15 +7,16 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytechmontpellier.boi.client.controllers.RootViewController">
    <center>
-      <AnchorPane fx:id="container" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="container" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        </AnchorPane>
    </center>
    <top>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-            <Button fx:id="sharpsButton" mnemonicParsing="false" onMouseClicked="#displaySharps" text="Sharps" />
-          <Button fx:id="gamesButton" mnemonicParsing="false" onMouseClicked="#displayGames" text="Games" />
-            <Button fx:id="betButton" mnemonicParsing="false" onMouseClicked="#displayBets" text="Bets" />
-            <Button fx:id="resultsButton" mnemonicParsing="false" onMouseClicked="#displayResults" text="Results" />
+            <Button fx:id="sharpsButton" mnemonicParsing="false"  text="Sharps" />
+          <Button fx:id="gamesButton" mnemonicParsing="false"  text="Games" />
+            <Button fx:id="betButton" mnemonicParsing="false"  text="Bets" />
+            <Button fx:id="resultsButton" mnemonicParsing="false" text="Results" />
         </buttons>
       </ButtonBar>
    </top>

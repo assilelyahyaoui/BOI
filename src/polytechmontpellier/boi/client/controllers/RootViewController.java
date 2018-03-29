@@ -38,19 +38,34 @@ public class RootViewController implements Initializable, BOIGui{
 	@FXML
 	private AnchorPane container;
 
+	@FXML
 	private LoginController loginCtrl;
 	
+	@FXML
 	private BetsController betsCtrl;
+	
+	@FXML
+	private ResultsController resultsCtrl;
+	
+	@FXML
+	private GamesController gamesCtrl;
+
+	@FXML
+	private SharpsController sharpsCtrl;
+
+	// Loaders
+	private FXMLLoader betsLoader;
+	private FXMLLoader gamesLoader;
+	private FXMLLoader resultsLoader;
+	private FXMLLoader sharpsLoader;
 	
 	private ClientFacade facade;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-
-		//Instanciate controllers
-		this.instanciateControllers();
+		// Set apps loaders and controllers
 		
+		this.setLoadersAndControllers();
 		// Set the login view first.
 		Node node;
 		try {
@@ -94,16 +109,21 @@ public class RootViewController implements Initializable, BOIGui{
 		this.gamesButton.setVisible(true);
 		this.resultsButton.setVisible(true);
 	}
-	public void instanciateControllers() {
-		this.loginCtrl = new LoginController();
-		this.betsCtrl = new BetsController();
+	
+	public void setLoadersAndControllers() {
+		this.betsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+		this.betsCtrl = betsLoader.getController();
+		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+		this.gamesCtrl = gamesLoader.getController();
+		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+		this.resultsCtrl = resultsLoader.getController();
+		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+		this.sharpsCtrl = sharpsLoader.getController();
 	}
 	
 	public void displayBets() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
-			loader.setController(this.loginCtrl);
-			Node node = (Node) loader.load();
+			Node node = (Node) betsLoader.load();
 			container.getChildren().setAll(node);
 			
 		} catch (IOException e) {
@@ -116,7 +136,7 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void displaySharps() {
 		try {
-			Node node = (Node) FXMLLoader.load(getClass().getResource("/polytechmontpellier/boi/client/view/Sharps.fxml"));
+			Node node = (Node) sharpsLoader.load();
 			container.getChildren().setAll(node);
 			
 		} catch (IOException e) {
@@ -129,7 +149,7 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void displayGames() {
 		try {
-			Node node = (Node) FXMLLoader.load(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
+			Node node = (Node) gamesLoader.load();
 			container.getChildren().setAll(node);
 			
 		} catch (IOException e) {
@@ -141,7 +161,7 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void displayResults() {
 		try {
-			Node node = (Node) FXMLLoader.load(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
+			Node node = (Node) resultsLoader.load();
 			container.getChildren().setAll(node);
 			
 		} catch (IOException e) {
@@ -211,6 +231,7 @@ public class RootViewController implements Initializable, BOIGui{
 					displayBets();
 					
 				}else if(action.equals("BAD_CREDENTIALS")) {
+					
 					//display error message
 					Label text = (Label)((AnchorPane)container.getChildren().get(0)).getChildren().get(3);
 					text.setText("Bad Credentials");
@@ -218,6 +239,8 @@ public class RootViewController implements Initializable, BOIGui{
 
 					
 
+				}else if(action.equals("GET_BETS")) {
+					betsCtrl.fillTableView( data);
 				}
 			}
 		});		
