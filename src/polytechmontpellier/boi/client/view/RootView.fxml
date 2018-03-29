@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
@@ -9,6 +10,13 @@
       <AnchorPane fx:id="container" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
-      <Button fx:id="betButton" mnemonicParsing="false" onMouseClicked="#displayBets" text="Bets" BorderPane.alignment="CENTER" />
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+            <Button fx:id="sharpsButton" mnemonicParsing="false" onMouseClicked="#displaySharps" text="Sharps" />
+          <Button fx:id="gamesButton" mnemonicParsing="false" onMouseClicked="#displayGames" text="Games" />
+            <Button fx:id="betButton" mnemonicParsing="false" onMouseClicked="#displayBets" text="Bets" />
+            <Button fx:id="resultsButton" mnemonicParsing="false" onMouseClicked="#displayResults" text="Results" />
+        </buttons>
+      </ButtonBar>
    </top>
 </BorderPane>

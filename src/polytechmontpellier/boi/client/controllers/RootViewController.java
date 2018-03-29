@@ -5,23 +5,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import polytechmontpellier.boi.client.BOIGui;
 import polytechmontpellier.boi.client.facades.ClientFacade;
 
@@ -30,6 +25,15 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	@FXML
 	private Button betButton;
+	
+	@FXML
+	private Button gamesButton;
+	
+	@FXML
+	private Button resultsButton;
+	
+	@FXML
+	private Button sharpsButton;
 	
 	@FXML
 	private AnchorPane container;
@@ -80,9 +84,15 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void hideElements() {
 		this.betButton.setVisible(false);
+		this.sharpsButton.setVisible(false);
+		this.gamesButton.setVisible(false);
+		this.resultsButton.setVisible(false);
 	}
 	public void showElements() {
 		this.betButton.setVisible(true);
+		this.sharpsButton.setVisible(true);
+		this.gamesButton.setVisible(true);
+		this.resultsButton.setVisible(true);
 	}
 	public void instanciateControllers() {
 		this.loginCtrl = new LoginController();
@@ -102,6 +112,84 @@ public class RootViewController implements Initializable, BOIGui{
 		}
 		
 		
+	}
+	
+	public void displaySharps() {
+		try {
+			Node node = (Node) FXMLLoader.load(getClass().getResource("/polytechmontpellier/boi/client/view/Sharps.fxml"));
+			container.getChildren().setAll(node);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public void displayGames() {
+		try {
+			Node node = (Node) FXMLLoader.load(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
+			container.getChildren().setAll(node);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+	}
+	
+	public void displayResults() {
+		try {
+			Node node = (Node) FXMLLoader.load(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
+			container.getChildren().setAll(node);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+	}
+	
+	public void setButtonListener() {
+		//Register the listener on the button
+		this.betButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+			
+				displayBets();
+			}	
+		});
+		this.sharpsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+			
+				displaySharps();
+			}	
+		});
+		this.gamesButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+			
+				displayGames();
+			}	
+		});
+		this.resultsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+			
+				displayResults();
+			}	
+		});
+				
 	}
 
 	/**
@@ -132,10 +220,7 @@ public class RootViewController implements Initializable, BOIGui{
 
 				}
 			}
-		});
-		// TODO Auto-generated method stub
-		
-		
+		});		
 	}
 
 }
