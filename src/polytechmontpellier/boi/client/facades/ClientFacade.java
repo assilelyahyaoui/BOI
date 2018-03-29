@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import com.lloseng.ocsf.client.ObservableClient;
 
@@ -28,6 +29,7 @@ public class ClientFacade implements Observer{
 	 * @var DEFAULT_HOST
 	 */
 	private final String DEFAULT_HOST = "localhost";
+	
 	
 	/**
 	 * server port.
@@ -107,6 +109,7 @@ public class ClientFacade implements Observer{
 	}
 	
 	public void getBets(){
+		System.out.println("sendToserver");
 		JSONObject json = new JSONObject();
 		try {
 			json.put("action", "GET_BETS");
@@ -124,7 +127,15 @@ public class ClientFacade implements Observer{
 	 * @return void
 	 */
 	private void handleMessageFromServer(String msg) {
-		this.boiGui.updateGUI(msg, null);
+		JSONParser parser = new JSONParser();
+		System.out.println(msg);
+		try {
+			JSONObject json = (JSONObject) parser.parse(msg);
+			this.boiGui.updateGUI((String) json.get("action"), json.get("data"));
+		}catch(Exception e) {
+			this.boiGui.updateGUI(msg, null);
+		}
+		
 	}
 
 	/**

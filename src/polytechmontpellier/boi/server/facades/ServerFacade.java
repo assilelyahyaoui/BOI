@@ -1,6 +1,10 @@
 package polytechmontpellier.boi.server.facades;
 
+import java.util.List;
+
+import polytechmontpellier.boi.server.managers.BetManager;
 import polytechmontpellier.boi.server.managers.UserManager;
+import polytechmontpellier.boi.server.models.Bet;
 
 public class ServerFacade{
 	
@@ -13,6 +17,11 @@ public class ServerFacade{
 	 * @var userManager UserManager
 	 */
 	private UserManager userManager;
+	
+	/**
+	 * @var betManager BetManager;
+	 */
+	private BetManager betManager;
 	
 	/**
 	 * Constructor 
@@ -40,6 +49,10 @@ public class ServerFacade{
 		
 		return this.userManager.login(pseudo, password);	
 		
+	}
+	
+	public List<Bet> getBets(){
+		return this.betManager.getBets();
 	}
 
 }

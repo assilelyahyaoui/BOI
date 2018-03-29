@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.json.simple.JSONArray;
+
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,6 +52,7 @@ public class RootViewController implements Initializable, BOIGui{
 	@FXML
 	private GamesController gamesCtrl;
 
+
 	@FXML
 	private SharpsController sharpsCtrl;
 
@@ -58,6 +61,12 @@ public class RootViewController implements Initializable, BOIGui{
 	private FXMLLoader gamesLoader;
 	private FXMLLoader resultsLoader;
 	private FXMLLoader sharpsLoader;
+	
+	// Nodes
+	private Node betsNode;
+	private Node gamesNode;
+	private Node resultsNode;
+	private Node sharpsNode;
 	
 	private ClientFacade facade;
 	
@@ -81,17 +90,7 @@ public class RootViewController implements Initializable, BOIGui{
 		this.hideElements();
 		
 		//Register the listener on the button
-		this.betButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-		
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-			
-				displayBets();
-			}
-			
-		});
+		this.setButtonListener();
 		
 		// Register RootViewController as the handler of the app UI.
 		this.facade = ClientFacade.getInstance(this);
@@ -113,18 +112,21 @@ public class RootViewController implements Initializable, BOIGui{
 	public void setLoadersAndControllers() {
 		this.betsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
 		this.betsCtrl = betsLoader.getController();
-		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
 		this.gamesCtrl = gamesLoader.getController();
-		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
 		this.resultsCtrl = resultsLoader.getController();
-		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Sharps.fxml"));
 		this.sharpsCtrl = sharpsLoader.getController();
 	}
 	
 	public void displayBets() {
 		try {
-			Node node = (Node) betsLoader.load();
-			container.getChildren().setAll(node);
+			if(this.betsNode == null) {
+				this.betsNode = (Node) betsLoader.load();
+			}
+			container.getChildren().clear();
+			container.getChildren().setAll(this.betsNode);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -136,8 +138,11 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void displaySharps() {
 		try {
-			Node node = (Node) sharpsLoader.load();
-			container.getChildren().setAll(node);
+			if(this.sharpsNode == null) {
+				this.sharpsNode = (Node) sharpsLoader.load();
+			}
+			container.getChildren().clear();
+			container.getChildren().setAll(this.sharpsNode);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -149,8 +154,11 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void displayGames() {
 		try {
-			Node node = (Node) gamesLoader.load();
-			container.getChildren().setAll(node);
+			if(this.gamesNode == null) {
+				this.gamesNode = (Node) gamesLoader.load();
+			}
+			container.getChildren().clear();
+			container.getChildren().setAll(this.gamesNode);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -161,8 +169,11 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void displayResults() {
 		try {
-			Node node = (Node) resultsLoader.load();
-			container.getChildren().setAll(node);
+			if(this.resultsNode == null) {
+				this.resultsNode = (Node) resultsLoader.load();
+			}
+			container.getChildren().clear();
+			container.getChildren().setAll(this.resultsNode);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -187,7 +198,7 @@ public class RootViewController implements Initializable, BOIGui{
 			@Override
 			public void handle(MouseEvent event) {
 				// TODO Auto-generated method stub
-			
+				System.out.println("test");
 				displaySharps();
 			}	
 		});
@@ -237,10 +248,9 @@ public class RootViewController implements Initializable, BOIGui{
 					text.setText("Bad Credentials");
 					text.backgroundProperty().set(new Background(new BackgroundFill(Color.web("#f44242"), null, null)));
 
-					
-
 				}else if(action.equals("GET_BETS")) {
-					betsCtrl.fillTableView( data);
+					System.out.println((String) data);
+					betsCtrl.fillTableView(data);
 				}
 			}
 		});		

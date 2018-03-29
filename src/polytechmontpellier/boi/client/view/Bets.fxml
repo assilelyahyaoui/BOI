@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytechmontpellier.boi.client.controllers.BetsController">
    <children>
       <Label fx:id="label" layoutX="536.0" layoutY="94.0" text="Bet List" textAlignment="CENTER">
          <font>
@@ -14,10 +14,10 @@
          </font></Label>
       <TableView fx:id="bets" layoutX="208.0" layoutY="161.0" prefHeight="634.0" prefWidth="846.0">
         <columns>
-            <TableColumn prefWidth="201.72042846679688" text="Team1" />
-            <TableColumn minWidth="0.0" prefWidth="209.30133056640625" text="Team2" />
-          <TableColumn prefWidth="211.69866943359375" text="Bet" />
-            <TableColumn prefWidth="223.73663330078125" text="Percentage" />
+            <TableColumn fx:id="team" prefWidth="201.72042846679688" text="Game" />
+            <TableColumn fx:id="sport" minWidth="0.0" prefWidth="209.30133056640625" text="Sport" />
+          <TableColumn fx:id="pseudo" prefWidth="211.69866943359375" text="Sharp" />
+            <TableColumn fx:id="pronostic" prefWidth="223.73663330078125" text="Pronostic" />
         </columns>
       </TableView>
    </children>

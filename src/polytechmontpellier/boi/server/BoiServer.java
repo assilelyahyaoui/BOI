@@ -1,9 +1,11 @@
 package polytechmontpellier.boi.server;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -12,6 +14,7 @@ import com.lloseng.ocsf.server.ObservableOriginatorServer;
 import com.lloseng.ocsf.server.OriginatorMessage;
 
 import polytechmontpellier.boi.server.facades.ServerFacade;
+import polytechmontpellier.boi.server.models.Bet;
 
 @SuppressWarnings("deprecation")
 public class BoiServer implements Observer{
@@ -83,6 +86,28 @@ public class BoiServer implements Observer{
 					client.sendToClient("BAD_CREDENTIALS");
 				}
 
+			}else if(data.get("action").equals("GET_BETS")) {
+				List<Bet> bets = facade.getBets();
+				try {
+					JSONObject json = new JSONObject();
+					json.put("action", "GET_BETS");
+					JSONArray array = new JSONArray();
+					for(Bet b : bets) {
+						JSONObject j = new JSONObject();
+						j.put("team", b.getTeam());
+						j.put("sport", b.getSportName());
+						j.put("pronostic", b.getPronostic());
+						j.put("pseudo", b.getPseudo());
+						array.add(j);
+					}
+					json.put("data", array);
+					
+					client.sendToClient(json.toString());
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

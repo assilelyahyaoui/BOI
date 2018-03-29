@@ -4,30 +4,24 @@ import javafx.beans.property.StringProperty;
 
 public class BetCell {
 
-	private StringProperty team1;
-	private StringProperty team2;
+	private StringProperty team;
 	private StringProperty bet;
-	private StringProperty percentage;
+	private StringProperty pseudo;
+	private StringProperty sport;
 	
-	public BetCell(StringProperty team1Name, StringProperty team2Name, StringProperty bet, StringProperty percentage) {
-		this.team1 = team1Name;
-		this.team2 = team2Name;
+	public BetCell(StringProperty teamName, StringProperty bet, StringProperty pseudo, StringProperty sport) {
+		this.team = teamName;
 		this.bet = bet;
-		this.percentage = percentage;
+		this.pseudo = pseudo;
+		this.sport = sport;
 
 	}
 	
 	public StringProperty getTeam1() {
-		return team1;
+		return team;
 	}
-	public void setTeam1(StringProperty team1) {
-		this.team1 = team1;
-	}
-	public StringProperty getTeam2() {
-		return team2;
-	}
-	public void setTeam2(StringProperty team2) {
-		this.team2 = team2;
+	public void setTeam1(StringProperty team) {
+		this.team = team;
 	}
 	public StringProperty getBet() {
 		return bet;
@@ -35,10 +29,18 @@ public class BetCell {
 	public void setBet(StringProperty bet) {
 		this.bet = bet;
 	}
-	public StringProperty getPercentage() {
-		return percentage;
+	public StringProperty getPseudo() {
+		return pseudo;
 	}
-	public void setPercentage(StringProperty percentage) {
-		this.percentage = percentage;
+	public void setPseudo(StringProperty pseudo) {
+		this.pseudo = pseudo;
+	}
+
+	public StringProperty getSport() {
+		return sport;
+	}
+
+	public void setSport(StringProperty sport) {
+		this.sport = sport;
 	}
 }
