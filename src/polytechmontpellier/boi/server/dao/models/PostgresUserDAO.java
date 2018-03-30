@@ -93,16 +93,11 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 	@Override
 	public boolean makePremium(String pseudo) {
 		// TODO Auto-generated method stub		
-		String query = "UPDATE Users SET role_id=(SELECT id FROM Users where label='PREMIUM') WHERE pseudo='"+ pseudo+"'";
+		System.out.println(pseudo);
+		String query = "UPDATE Users SET role_id = 3 WHERE pseudo='"+ pseudo+"'";
 		this.excuteQuery(query);
 		return true;
 		
-	}
-
-	@Override
-	public List<User> findAllFollowedSharps(String pseudo) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

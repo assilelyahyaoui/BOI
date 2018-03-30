@@ -25,6 +25,7 @@ public class UpgradeController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		this.facade = ClientFacade.getInstance();
+		this.setButtonListener();
 	}
 	public void setButtonListener() {
 		this.upgradeBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -32,6 +33,7 @@ public class UpgradeController implements Initializable {
 			@Override
 			public void handle(MouseEvent event) {
 				// TODO Auto-generated method stub
+				System.out.println("Upgrade");
 				upgradePremium();
 			}	
 		});

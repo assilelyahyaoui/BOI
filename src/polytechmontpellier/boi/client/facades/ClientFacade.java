@@ -149,6 +149,7 @@ public class ClientFacade implements Observer{
 	}
 	
 	public void makePremium() {
+		System.out.println("make premium");
 		try {
 			JSONObject json = new JSONObject();
 			json.put("action","MAKE_PREMIUM" ); 
