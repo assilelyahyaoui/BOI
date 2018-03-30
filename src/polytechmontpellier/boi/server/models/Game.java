@@ -1,5 +1,4 @@
-	private int firstScore;
-	private int secondScore;
+
 package polytechmontpellier.boi.server.models;
 
 import java.sql.Date;
@@ -9,7 +8,9 @@ public class Game {
 	private Team teamHome;
 	private Team teamAway;
 	private Date date;
-
+	private int firstScore;
+	private int secondScore;
+	
 	public Game(Team home, Team away, Date date) {
 		this.setTeamHome(home);
 		this.setTeamAway(away);

@@ -16,6 +16,7 @@ import com.lloseng.ocsf.server.OriginatorMessage;
 import polytechmontpellier.boi.server.facades.ServerFacade;
 import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
+import polytechmontpellier.boi.server.models.User;
 
 @SuppressWarnings("deprecation")
 public class BoiServer implements Observer{
@@ -112,6 +113,10 @@ public class BoiServer implements Observer{
 				break;
 			case "DISPLAY_ALL_SHARPS":
 				List<User> sharps = facade.findAllFollowedSharps(); 
+				break;
+			case "GET_RESULTS" :
+				List<Game> games = facade.getGames();
+
 				try {
 					JSONObject json = new JSONObject();
 					json.put("action", "GET_RESULTS");
@@ -119,9 +124,9 @@ public class BoiServer implements Observer{
 					for(Game g : games) {
 						JSONObject j = new JSONObject();
 						j.put("date", g.getDate());
-						j.put("firstTeam", g.getFirstTeam());
+						j.put("firstTeam", g.getTeamHome());
 						j.put("firstScore", g.getFirstScore());
-						j.put("secondTeam", g.getSecondTeam());
+						j.put("secondTeam", g.getTeamAway());
 						j.put("secondScore", g.getSecondScore());
 						array.add(j);
 					}
@@ -133,9 +138,9 @@ public class BoiServer implements Observer{
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
-				
-			}else if(data.get("action").equals("MAKE_PREMIUM")) {
-				if(this.facade.makePremium(client.getInfo("pseudo"))) {
+				break;
+			case"MAKE_PREMIUM" :
+				if(this.facade.makePremium((String)client.getInfo("pseudo"))) {
 					client.sendToClient("IS_PREMIUM");
 				}else {
 					client.sendToClient("IS_NOT_PREMIUM");
@@ -164,6 +169,7 @@ public class BoiServer implements Observer{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	}
 	
 	/**
