@@ -5,8 +5,7 @@ import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.FactoryType;
 import polytechmontpellier.boi.server.factories.AbstractDAOFactory;
 import polytechmontpellier.boi.server.models.Bet;
-import polytechmontpellier.boi.server.models.Game;
-import polytechmontpellier.boi.server.models.User;
+import polytechmontpellier.boi.server.models.*;
 
 public class DAOFacade{
 
@@ -72,5 +71,16 @@ public class DAOFacade{
 			e.printStackTrace();
 		}
 		return gameDAO;
+	}
+	
+	public DAO<Sharp> getSharpDAO() {
+		DAO<Sharp> sharpDAO = null;
+		try {
+			sharpDAO = this.getDAOFactory().getSharpsDAO();
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return sharpDAO;
 	}
 }

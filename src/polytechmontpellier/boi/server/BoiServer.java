@@ -121,8 +121,10 @@ public class BoiServer implements Observer{
 					JSONObject json = new JSONObject();
 					json.put("action", "GET_RESULTS");
 					JSONArray array = new JSONArray();
+					
 					for(Game g : games) {
 						JSONObject j = new JSONObject();
+						
 						j.put("date", g.getDate());
 						j.put("firstTeam", g.getTeamHome());
 						j.put("firstScore", g.getFirstScore());

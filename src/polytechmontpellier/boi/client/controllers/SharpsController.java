@@ -54,10 +54,10 @@ public class SharpsController implements Initializable {
 		for(Object o : array) {
 			JSONObject obj = (JSONObject) o;
 			try {
-				SharpCell sharpCell = new SharpCell((String)obj.get("pseudo"));
+				SharpCell sharpCell = new SharpCell((String)obj.get("pseudo"), (String)obj.get("numberOfFollowers"), (String)obj.get("numberOfBets"));
 				sharpCells.add(sharpCell);
 			}catch(Exception e) {
-				e.printStackTrace();
+			 	e.printStackTrace(); 
 			}
 			
 		}
@@ -65,13 +65,13 @@ public class SharpsController implements Initializable {
 		username.setCellValueFactory(
 			   new PropertyValueFactory<SharpCell,String>("username")
 		);
-		/*numberOfFollowers.setCellValueFactory(
+		numberOfFollowers.setCellValueFactory(
 		    new PropertyValueFactory<SharpCell,String>("numberOfFollowers")
 		);
 		numberOfBets.setCellValueFactory(
 		    new PropertyValueFactory<SharpCell,String>("numberOfBets")
 		);
-		accuracy.setCellValueFactory(
+		/*accuracy.setCellValueFactory(
 		    new PropertyValueFactory<SharpCell,String>("accuracy")
 		);*/
 	

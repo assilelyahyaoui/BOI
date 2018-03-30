@@ -27,7 +27,7 @@ public class PostgresBettorDAO extends PostgresUserDAO implements UserDAO {
 		this.pgConnection = PostgreSQLConnection.getConnection();
 	}
 	
-	public ArrayList<User> findAllFollowedSharps(String pseudo) {
+	/*public List<User> findAllFollowedSharps(String pseudo) {
 		// TODO Auto-generated method stub
 //		String query = "SELECT * FROM users u WHERE roleID = 1 ";
 		
@@ -51,7 +51,7 @@ public class PostgresBettorDAO extends PostgresUserDAO implements UserDAO {
 		System.out.println(sharpsList);
 		
 		return sharpsList ; 
-	}
+	}*/
 		
 	private ResultSet excuteQuery(String query) {
 		try {

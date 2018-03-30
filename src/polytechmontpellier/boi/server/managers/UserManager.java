@@ -8,8 +8,10 @@ import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
+import polytechmontpellier.boi.server.dao.interfaces.*;
+
 import polytechmontpellier.boi.server.facades.DAOFacade;
-import polytechmontpellier.boi.server.models.User;
+import polytechmontpellier.boi.server.models.*;
 
 public class UserManager{
 
@@ -28,6 +30,7 @@ public class UserManager{
 	 * @var userDAO UserDAO
 	 */
 	private DAO<User> userDAO;
+	private DAO<Sharp> sharpDAO;
 	
 
 	
@@ -36,6 +39,7 @@ public class UserManager{
 	 */
 	private UserManager() {
 		this.userDAO = DAOFacade.getInstance().getUserDAO();
+		this.sharpDAO = DAOFacade.getInstance().getSharpDAO();
 	}
 	
 	public static UserManager getInstance() {

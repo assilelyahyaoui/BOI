@@ -6,6 +6,7 @@ import polytechmontpellier.boi.server.managers.BetManager;
 import polytechmontpellier.boi.server.managers.GameManager;
 import polytechmontpellier.boi.server.managers.UserManager;
 import polytechmontpellier.boi.server.models.Bet;
+import polytechmontpellier.boi.server.models.Sharp;
 import polytechmontpellier.boi.server.models.Game;
 import polytechmontpellier.boi.server.models.User;
 

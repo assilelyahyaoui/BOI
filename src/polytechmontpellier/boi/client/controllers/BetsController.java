@@ -77,7 +77,7 @@ public class BetsController implements Initializable {
 			
 		
 		bets.setItems(betCells);
-		
+	 
 	}
 	
 	
