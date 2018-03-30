@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="203.0" layoutY="142.0" text="normal user, upgrade to see more bets">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="105.0" prefHeight="109.0" prefWidth="112.0" text="You are a">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Button fx:id="upgradeBtn" layoutX="310.0" layoutY="235.0" mnemonicParsing="false" text="Pay and upgrade" />
+   </children>
+</AnchorPane>

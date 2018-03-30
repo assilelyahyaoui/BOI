@@ -38,6 +38,9 @@ public class RootViewController implements Initializable, BOIGui{
 	private Button sharpsButton;
 	
 	@FXML
+	private Button upgradeButton;
+	
+	@FXML
 	private AnchorPane container;
 
 	@FXML
@@ -54,18 +57,23 @@ public class RootViewController implements Initializable, BOIGui{
 
 	@FXML
 	private SharpsController sharpsCtrl;
+	
+	@FXML
+	private UpgradeController upgradeCtrl;
 
 	// Loaders
 	private FXMLLoader betsLoader;
 	private FXMLLoader gamesLoader;
 	private FXMLLoader resultsLoader;
 	private FXMLLoader sharpsLoader;
+	private FXMLLoader upgradeLoader;
 	
 	// Nodes
 	private Node betsNode;
 	private Node gamesNode;
 	private Node resultsNode;
 	private Node sharpsNode;
+	private Node upgradeNode;
 	
 	private ClientFacade facade;
 	
@@ -101,12 +109,14 @@ public class RootViewController implements Initializable, BOIGui{
 		this.sharpsButton.setVisible(false);
 		this.gamesButton.setVisible(false);
 		this.resultsButton.setVisible(false);
+		this.upgradeButton.setVisible(false);
 	}
 	public void showElements() {
 		this.betButton.setVisible(true);
 		this.sharpsButton.setVisible(true);
 		this.gamesButton.setVisible(true);
 		this.resultsButton.setVisible(true);
+		this.upgradeButton.setVisible(true);
 	}
 
 	
@@ -124,6 +134,9 @@ public class RootViewController implements Initializable, BOIGui{
 			this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/getAllSharps.fxml"));
 			this.sharpsNode = (Node) this.sharpsLoader.load();
 			this.sharpsCtrl = sharpsLoader.getController();
+			this.upgradeLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Upgrade.fxml"));
+			this.upgradeNode = (Node) this.upgradeLoader.load();
+			this.upgradeCtrl = upgradeLoader.getController();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -150,6 +163,12 @@ public class RootViewController implements Initializable, BOIGui{
 		container.getChildren().clear();
 		container.getChildren().setAll(this.resultsNode);
 		this.facade.getResults();
+	}
+	
+	public void displayUpgrade() {
+		container.getChildren().clear();
+		container.getChildren().setAll(this.upgradeNode);
+		//this.facade.getResults();
 	}
 	
 	public void setButtonListener() {
@@ -187,6 +206,15 @@ public class RootViewController implements Initializable, BOIGui{
 				// TODO Auto-generated method stub
 			
 				displayResults();
+			}	
+		});
+		this.upgradeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+			
+				displayUpgrade();
 			}	
 		});
 				
