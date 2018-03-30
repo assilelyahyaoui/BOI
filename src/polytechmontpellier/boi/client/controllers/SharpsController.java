@@ -5,11 +5,14 @@ import java.util.ResourceBundle;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,8 +22,8 @@ import polytechmontpellier.boi.client.facades.ClientFacade;
 
 public class SharpsController implements Initializable {
 
-	
-	private TableView<SharpCell> sharpsTV;
+	@FXML
+	private TableView<SharpCell> sharps;
 
 	@FXML
 	private TableColumn username;
@@ -37,21 +40,21 @@ public class SharpsController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		sharpsTV.setEditable(false);
-		ClientFacade.getInstance().displayAllFollowedSharps();
-		System.out.println("sharpsController");
+		sharps.setEditable(false);
+		
 	}
 	
 	
 	public void fillTableView(Object data) {
 		System.out.println("SharpsController fill tableView");
+		System.out.println(data);
 		JSONArray array = (JSONArray) data;
 		
 		ObservableList<SharpCell> sharpCells = FXCollections.observableArrayList();
 		for(Object o : array) {
 			JSONObject obj = (JSONObject) o;
 			try {
-				SharpCell sharpCell = new SharpCell((StringProperty) obj.get("username"), (StringProperty)obj.get("numberOfFollowers"),(StringProperty) obj.get("numberOfBets"), (StringProperty)obj.get("accuracy"), null);
+				SharpCell sharpCell = new SharpCell((String)obj.get("pseudo"));
 				sharpCells.add(sharpCell);
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -71,7 +74,8 @@ public class SharpsController implements Initializable {
 		accuracy.setCellValueFactory(
 		    new PropertyValueFactory<SharpCell,String>("accuracy")
 		);*/
-		
-		sharpsTV.setItems(sharpCells);
+	
+		sharps.setItems(sharpCells);
+		sharps.getColumns().addAll(username);
     }
 }

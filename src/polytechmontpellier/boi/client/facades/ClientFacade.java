@@ -126,6 +126,16 @@ public class ClientFacade implements Observer{
 		}
 	}
 	
+	public void getSharps(){
+		JSONObject json = new JSONObject();
+		try {
+			json.put("action", "DISPLAY_ALL_SHARPS");
+			this.observableClient.sendToServer(json.toString());
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void displayAllFollowedSharps()  {
 		try {
 			JSONObject json = new JSONObject();
@@ -151,6 +161,8 @@ public class ClientFacade implements Observer{
 		JSONParser parser = new JSONParser();
 		try {
 			JSONObject json = (JSONObject) parser.parse(msg);
+			System.out.println(json.get("action"));
+			System.out.println(json.get("data"));
 			this.boiGui.updateGUI((String) json.get("action"), json.get("data"));
 		}catch(Exception e) {
 			this.boiGui.updateGUI(msg, null);

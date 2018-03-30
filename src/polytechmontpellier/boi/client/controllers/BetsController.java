@@ -46,7 +46,8 @@ public class BetsController implements Initializable {
 	}
 	
 	public void fillTableView(Object data) {
-		
+		System.out.println("BetsController fill tableView");
+
 		JSONArray array = (JSONArray)  data;
 			
 		ObservableList<BetCell> betCells = FXCollections.observableArrayList();
