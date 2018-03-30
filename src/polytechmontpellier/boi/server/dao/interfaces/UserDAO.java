@@ -13,7 +13,7 @@ public interface UserDAO {
 	 * @return User
 	 */
 	public User getUserByPseudo(String pseudo);
-	public List<User> findAllFollowedSharps(String pseudo);
+	//public List<?> findAllFollowedSharps(String pseudo);
 	public boolean makePremium(String pseudo);
 	
 	

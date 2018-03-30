@@ -22,36 +22,10 @@ public class PostgresBettorDAO extends PostgresUserDAO implements UserDAO {
 	/**
 	 * Constructor
 	 */
-	
 	public PostgresBettorDAO() {
 		this.pgConnection = PostgreSQLConnection.getConnection();
 	}
 	
-	/*public List<User> findAllFollowedSharps(String pseudo) {
-		// TODO Auto-generated method stub
-//		String query = "SELECT * FROM users u WHERE roleID = 1 ";
-		
-		String query = "SELECT * FROM Users u WHERE u.userID IN (SELECT f.sharpID FROM Users u1 , Follow f WHERE u1.userID = f.bettorID AND u1.pseudo = '";
-		query+=pseudo;
-		query+="'";
-
-		
-		ResultSet sharps = this.excuteQuery(query);
-		sharpsList = null; 
-		try {
-			while( sharps.next()) {
-				System.out.println("sharpList : " ); 
-				System.out.println(sharps);
-				sharpsList.add((User) sharps); 
-			}
-				 
-			} catch(Exception e) {e.printStackTrace();}
-		
-		System.out.println("sharpsList");
-		System.out.println(sharpsList);
-		
-		return sharpsList ; 
-	}*/
 		
 	private ResultSet excuteQuery(String query) {
 		try {

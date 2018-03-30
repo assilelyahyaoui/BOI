@@ -76,8 +76,6 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		return user;
 	}
 	
-		
-	
 	private ResultSet excuteQuery(String query) {
 		try {
             Statement state = this.pgConnection.createStatement();
@@ -90,45 +88,7 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
         return null;
 	}
 
-	@Override
-	public List<Sharp> findAllFollowedSharps(String pseudo) {
-		// TODO Auto-generated method stub
-		System.out.println("PostgresUsereDAO finndALLfollowed vide");
-		return null;
-	}
-
 	
-	/*public List<Sharp> findAllFollowedSharps(String pseudo) {
-		// TODO Auto-generated method stub
-		String query = "SELECT u.pseudo FROM Users u WHERE u.id IN (SELECT f.sharpID FROM Users u1 , Follow f WHERE u1.id = f.bettorID AND u1.pseudo = '";
-		query+=pseudo;
-		query+="')";
-
-		 
-		
-		ResultSet sharpSet = this.excuteQuery(query);
-		ArrayList<User> sharps = new ArrayList<User>();
-		
-		try {
-			while(sharpSet.next()) {
-				while(sharpSet2.next()) {
-					if( sharpSet.getString(1) == sharpSet2.getString(1) ) {
-						while(sharpSet3.next()) {
-							sharps.add(new Sharp(sharpSet.getString(1), sharpSet2.getString(3), sharpSet3.getString(3)));	
-						}
-					}
-					
-				
-				}
-			
-			}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return sharps ; 
-	}
 
 	@Override
 	public boolean makePremium(String pseudo) {

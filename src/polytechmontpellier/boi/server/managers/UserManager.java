@@ -63,9 +63,9 @@ public class UserManager{
 	
 	}
 	
-	public List<User> findAllFollowedSharps() {
+	public List<Sharp> findAllFollowedSharps() {
 
-		List<User> followedSharpList = ((UserDAO) userDAO).findAllFollowedSharps(this.currentUser.getPseudo());
+		List<Sharp> followedSharpList = ((SharpDAO) sharpDAO).findAllFollowedSharps(this.currentUser.getPseudo());
 		return followedSharpList ; 
 				
 	}

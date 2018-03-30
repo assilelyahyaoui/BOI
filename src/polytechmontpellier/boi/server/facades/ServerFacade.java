@@ -72,7 +72,7 @@ public class ServerFacade{
 		return this.userManager.makePremium(pseudo);
 	}
 
-	public List<User> findAllFollowedSharps() {
+	public List<Sharp> findAllFollowedSharps() {
 		return this.userManager.findAllFollowedSharps();
 	}
 	public List<Game> getGames(){

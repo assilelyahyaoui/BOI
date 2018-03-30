@@ -55,10 +55,6 @@ public class PostgresSharpsDAO extends DAO<Sharp> implements SharpDAO{
 		return null;
 	}
 
-
-
-
-
 	@Override
 	public List<Sharp> findAllFollowedSharps(String pseudo) {
 		// TODO Auto-generated method stub
@@ -66,8 +62,6 @@ public class PostgresSharpsDAO extends DAO<Sharp> implements SharpDAO{
 		query+=pseudo;
 		query+="')";
 
-		 
-		
 		ResultSet sharpSet = this.excuteQuery(query);
 		
 		String query2 = "SELECT u.pseudo, u.id,Count(*) FROM Users u , Follow f WHERE f.sharpID = u.id GROUP BY u.id ";
