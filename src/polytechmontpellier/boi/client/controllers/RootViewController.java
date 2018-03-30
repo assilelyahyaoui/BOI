@@ -111,6 +111,16 @@ public class RootViewController implements Initializable, BOIGui{
 	
 	public void setLoadersAndControllers() {
 		this.betsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+		this.betsCtrl = betsLoader.getController();
+		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
+		this.gamesCtrl = gamesLoader.getController();
+		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
+		this.resultsCtrl = resultsLoader.getController();
+		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/getAllSharps.fxml"));
+		this.sharpsCtrl = sharpsLoader.getController();
+	}
+	
+	public void displayBets() {
 		try {
 			this.betsNode = (Node) this.betsLoader.load();
 			this.betsCtrl = betsLoader.getController();

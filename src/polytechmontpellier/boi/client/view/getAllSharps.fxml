@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<!--  fx:controller="polytechmontpellier.boi.client.controllers.LoginController" -->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+         <children>
+      <AnchorPane layoutX="19.0" layoutY="26.0" prefHeight="117.0" prefWidth="1168.0">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="66.0" layoutX="40.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../images/boi_logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="64.0" layoutY="170.0" prefHeight="510.0" prefWidth="1061.0">
+         <children>
+            <TableView id="SharpsTable" layoutX="-2.0" layoutY="18.0" prefHeight="485.0" prefWidth="1077.0">
+              <columns>
+                <TableColumn id="UsernameSharpColumn" fx:id="UsernameSharpColumnUsernameSharpColumn" prefWidth="238.4999771118164" text="Sharp username" />
+                  <TableColumn id="numberofFollowersCollumn" fx:id="numberofFollowersCollumnnumberofFollowersCollumn" prefWidth="289.2751159667969" text="number of followers" />
+                  <TableColumn id="numberOfBetsColumn" fx:id="numberOfBetsColumnnumberOfBetsColumn" prefWidth="306.224853515625" text="Number of bets " />
+                  <TableColumn id="accuracyPercentageColumn" fx:id="accuracyPercentageColumnaccuracyPercentageColumn" prefWidth="220.56060791015625" text="Accuracy percentage" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+         </children>
+</AnchorPane>

@@ -67,6 +67,7 @@ public class BoiClient extends Application{
 	public static void main(String[] args) {
 		// Launch the graphical user interface.
 		BoiClient.launch(args);
+		
 
 	}
 	

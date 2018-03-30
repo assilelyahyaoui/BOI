@@ -72,7 +72,8 @@ public class ObservableClient extends Observable
    */
   final public void sendToServer(Object msg) throws IOException
   {
-    service.sendToServer(msg);
+	  System.out.println("ObservableClient, sendtoserver " + msg);
+      service.sendToServer(msg);
   }
 
 // ACCESSING METHODS ------------------------------------------------
@@ -140,6 +141,7 @@ public class ObservableClient extends Observable
    */
   protected void handleMessageFromServer(Object message)
   {
+	  System.out.println("ObservableServer " + message);
     setChanged();
     notifyObservers(message);
   }

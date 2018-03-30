@@ -29,7 +29,9 @@ public class User{
 	/**
 	 * Constructor
 	 */
-	public User() {}
+	public User(String pseudo) {
+		this.pseudo = pseudo ; 
+	}
 	
 	/************************ GETTERS *****************************/
 	public String getPseudo() {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
 import polytechmontpellier.boi.server.factories.PostgreSQLConnection;
+import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.User;
 
 public class PostgresUserDAO extends DAO<User> implements UserDAO {
@@ -14,6 +15,8 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 	 * @var pgConnection
 	 */
 	private Connection pgConnection;
+	private ArrayList<User> sharpsList;
+
 	
 	/**
 	 * Constructor
@@ -61,6 +64,8 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		query+= " AND u.role_id = r.id";
 		
 		ResultSet users = this.excuteQuery(query);
+
+
 		User user = null;
 		try {
 			users.next();
@@ -70,6 +75,8 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		
 		return user;
 	}
+	
+		
 	
 	private ResultSet excuteQuery(String query) {
 		try {
@@ -81,6 +88,35 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
             e.printStackTrace();
         }
         return null;
+	}
+
+	@Override
+	public ArrayList<User> findAllFollowedSharps(String pseudo) {
+		// TODO Auto-generated method stub
+		String query = "SELECT u.pseudo FROM Users u WHERE u.id IN (SELECT f.sharpID FROM Users u1 , Follow f WHERE u1.id = f.bettorID AND u1.pseudo = '";
+		query+=pseudo;
+		query+="')";
+
+		ResultSet sharpSet = this.excuteQuery(query);
+		
+		System.out.println("PUDAO findAllFollowedSharps sharpSet");
+		System.out.println(sharpSet); 
+		
+		ArrayList<User> sharps = new ArrayList<User>();
+		
+		try {
+			while(sharpSet.next()) {
+				sharps.add(new User(sharpSet.getString(1)));
+			}
+		}
+		catch(Exception e) {
+			System.out.println("postgresUserDAO catch de array ");
+			e.printStackTrace();
+		}
+    	System.out.println("postgresUserDAO sharps");
+		System.out.println(sharps);
+		
+		return sharps ; 
 	}
 
 }

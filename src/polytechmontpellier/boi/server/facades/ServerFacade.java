@@ -3,7 +3,12 @@ package polytechmontpellier.boi.server.facades;
 import java.util.List;
 
 import polytechmontpellier.boi.server.managers.BetManager;
+import java.util.ArrayList;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import polytechmontpellier.boi.server.managers.UserManager;
+import polytechmontpellier.boi.server.models.User;
 import polytechmontpellier.boi.server.models.Bet;
 
 public class ServerFacade{
@@ -54,6 +59,11 @@ public class ServerFacade{
 	
 	public List<Bet> getBets(){
 		return this.betManager.getBets();
+	}
+	
+	public List<User> findAllFollowedSharps() {
+		System.out.println("Server Facade display all sharps ");
+		return this.userManager.findAllFollowedSharps();	
 	}
 
 }
