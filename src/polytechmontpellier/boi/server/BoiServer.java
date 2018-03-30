@@ -16,6 +16,7 @@ import com.lloseng.ocsf.server.OriginatorMessage;
 import polytechmontpellier.boi.server.facades.ServerFacade;
 import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
+import polytechmontpellier.boi.server.models.User;
 
 @SuppressWarnings("deprecation")
 public class BoiServer implements Observer{
@@ -111,7 +112,7 @@ public class BoiServer implements Observer{
 				}
 				break;
 			case "DISPLAY_ALL_SHARPS":
-				//List<User> sharps = facade.findAllFollowedSharps(); 
+				List<User> sharps = facade.findAllFollowedSharps(); 
 				break;
 			case "GET_RESULTS" :
 				List<Game> games = facade.getGames();

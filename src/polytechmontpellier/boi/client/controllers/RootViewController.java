@@ -255,10 +255,10 @@ public class RootViewController implements Initializable, BOIGui{
 				}else if(action.equals("IS_PREMIUM")) {
 
 					facade.getBets();
+					
 				}else if(action.equals("IS_NOT_PREMIUM")) {
 					System.out.println("Cannot make sharp premium.");
-					
-					
+						
 				}else if(action.equals("DISPLAY_ALL_SHARPS")) {
 					System.out.println("rootViewC , run()");
 					System.out.println(data);
