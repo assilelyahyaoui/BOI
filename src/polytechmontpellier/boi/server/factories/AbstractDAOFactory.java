@@ -4,11 +4,13 @@ import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.FactoryType;
 import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
+import polytechmontpellier.boi.server.models.Sharp;
 import polytechmontpellier.boi.server.models.User;
 
 public abstract class AbstractDAOFactory {
 	public abstract DAO<User> getUserDAO();
 	public abstract DAO<Bet> getBetDAO();
+	public abstract DAO<Sharp> getSharpsDAO();
 	public abstract DAO<Game> getGameDAO();
 	
 	public static AbstractDAOFactory getFactory(FactoryType type) {
@@ -19,4 +21,6 @@ public abstract class AbstractDAOFactory {
 		
 		return null;
 	}
+
+
 }

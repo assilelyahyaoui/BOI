@@ -2,12 +2,12 @@ package polytechmontpellier.boi.server.dao.models;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import polytechmontpellier.boi.server.dao.DAO;
 import polytechmontpellier.boi.server.dao.interfaces.UserDAO;
 import polytechmontpellier.boi.server.factories.PostgreSQLConnection;
-import polytechmontpellier.boi.server.models.Bet;
-import polytechmontpellier.boi.server.models.User;
+import polytechmontpellier.boi.server.models.*;
 
 public class PostgresUserDAO extends DAO<User> implements UserDAO {
 	
@@ -91,22 +91,46 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 	}
 
 	@Override
-	public ArrayList<User> findAllFollowedSharps(String pseudo) {
+	public List<Sharp> findAllFollowedSharps(String pseudo) {
+		// TODO Auto-generated method stub
+		System.out.println("PostgresUsereDAO finndALLfollowed vide");
+		return null;
+	}
+
+	
+	/*public List<Sharp> findAllFollowedSharps(String pseudo) {
 		// TODO Auto-generated method stub
 		String query = "SELECT u.pseudo FROM Users u WHERE u.id IN (SELECT f.sharpID FROM Users u1 , Follow f WHERE u1.id = f.bettorID AND u1.pseudo = '";
 		query+=pseudo;
 		query+="')";
 
+		 
+		
 		ResultSet sharpSet = this.excuteQuery(query);
+		
+		String query2 = "SELECT u.pseudo, u.id,Count(*) FROM Users u , Follow f WHERE f.sharpID = u.id GROUP BY u.id ";
+		ResultSet sharpSet2 = this.excuteQuery(query2);
+
+		String query3 = "SELECT u.pseudo, u.id , Count(*) FROM Users u , Advices a  WHERE a.userID = u.id GROUP BY u.id ";
+		ResultSet sharpSet3 = this.excuteQuery(query3);
 		
 		System.out.println("PUDAO findAllFollowedSharps sharpSet");
 		System.out.println(sharpSet); 
 		
-		ArrayList<User> sharps = new ArrayList<User>();
+		List<Sharp> sharps = new ArrayList<Sharp>();
 		
 		try {
 			while(sharpSet.next()) {
-				sharps.add(new User(sharpSet.getString(1)));
+				while(sharpSet2.next()) {
+					if( sharpSet.getString(1) == sharpSet2.getString(1) ) {
+						while(sharpSet3.next()) {
+							sharps.add(new Sharp(sharpSet.getString(1), sharpSet2.getString(3), sharpSet3.getString(3)));	
+						}
+					}
+					
+				
+				}
+			
 			}
 		}
 		catch(Exception e) {
@@ -117,6 +141,6 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		System.out.println(sharps);
 		
 		return sharps ; 
-	}
-
+	}*/
+	
 }

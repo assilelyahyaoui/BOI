@@ -161,8 +161,8 @@ public class ClientFacade implements Observer{
 		JSONParser parser = new JSONParser();
 		try {
 			JSONObject json = (JSONObject) parser.parse(msg);
-			System.out.println(json.get("action"));
-			System.out.println(json.get("data"));
+			System.out.println("client facade hndlemsg action " + json.get("action"));
+			System.out.println("client facade hndlemsg data " + json.get("data"));
 			this.boiGui.updateGUI((String) json.get("action"), json.get("data"));
 		}catch(Exception e) {
 			this.boiGui.updateGUI(msg, null);

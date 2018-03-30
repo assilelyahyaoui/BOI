@@ -21,12 +21,11 @@
       </AnchorPane>
       <AnchorPane layoutX="64.0" layoutY="170.0" prefHeight="510.0" prefWidth="1061.0">
          <children>
-            <TableView id="SharpsTable" fx:id="sharps" layoutX="-2.0" layoutY="18.0" prefHeight="485.0" prefWidth="1077.0">
+            <TableView id="SharpsTable" fx:id="sharps" layoutX="213.0" layoutY="17.0" prefHeight="469.0" prefWidth="719.0">
               <columns>
                 <TableColumn id="UsernameSharpColumn" fx:id="username" prefWidth="238.4999771118164" text="Sharp username" />
-                  <TableColumn id="numberofFollowersCollumn" fx:id="numberofFollowersCollumnnumberofFollowersCollumn" prefWidth="289.2751159667969" text="number of followers" />
-                  <TableColumn id="numberOfBetsColumn" fx:id="numberOfBetsColumnnumberOfBetsColumn" prefWidth="306.224853515625" text="Number of bets " />
-                  <TableColumn id="accuracyPercentageColumn" fx:id="accuracyPercentageColumnaccuracyPercentageColumn" prefWidth="220.56060791015625" text="Accuracy percentage" />
+                  <TableColumn id="numberofFollowersCollumn" fx:id="numberOfFollowers" prefWidth="289.2751159667969" text="number of bets" />
+                  <TableColumn id="numberOfBetsColumn" fx:id="numberOfBets" prefWidth="306.224853515625" text="Number of followers" />
               </columns>
             </TableView>
          </children>

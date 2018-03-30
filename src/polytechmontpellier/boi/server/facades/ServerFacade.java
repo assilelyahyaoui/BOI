@@ -6,6 +6,7 @@ import polytechmontpellier.boi.server.managers.BetManager;
 import polytechmontpellier.boi.server.managers.GameManager;
 import polytechmontpellier.boi.server.managers.UserManager;
 import polytechmontpellier.boi.server.models.Bet;
+import polytechmontpellier.boi.server.models.Sharp;
 import polytechmontpellier.boi.server.models.Game;
 
 public class ServerFacade{
@@ -67,6 +68,11 @@ public class ServerFacade{
 		}else {
 			return this.betManager.getBets(5);
 		}
+	}
+	
+	public List<Sharp> findAllFollowedSharps() {
+		System.out.println("Server Facade display all sharps ");
+		return this.userManager.findAllFollowedSharps();	
 	}
 	
 	public List<Game> getGames(){
