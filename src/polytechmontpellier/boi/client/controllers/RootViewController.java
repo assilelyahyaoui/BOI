@@ -119,41 +119,7 @@ public class RootViewController implements Initializable, BOIGui{
 		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/getAllSharps.fxml"));
 		this.sharpsCtrl = sharpsLoader.getController();
 	}
-	
-	public void displayBets() {
-		try {
-			this.betsNode = (Node) this.betsLoader.load();
-			this.betsCtrl = betsLoader.getController();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
-		try {
-			this.gamesNode = (Node) this.gamesLoader.load();
-			this.gamesCtrl = gamesLoader.getController();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
-		try {
-			this.resultsNode = (Node) this.resultsLoader.load();
-			this.resultsCtrl = resultsLoader.getController();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Sharps.fxml"));
-		try {
-			this.sharpsNode = (Node) this.sharpsLoader.load();
-			this.sharpsCtrl = sharpsLoader.getController();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 	
 	public void displayBets() {
 		container.getChildren().clear();

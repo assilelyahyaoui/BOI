@@ -125,6 +125,18 @@ public class ClientFacade implements Observer{
 			e.printStackTrace();
 		}
 	}
+	
+	public void displayAllFollowedSharps()  {
+		try {
+			JSONObject json = new JSONObject();
+			json.put("action","DISPLAY_ALL_SHARPS" ); 
+			this.observableClient.sendToServer(json.toString());
+			System.out.println("ClientFacade " + json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Business logic to handle messages sent by the server.
