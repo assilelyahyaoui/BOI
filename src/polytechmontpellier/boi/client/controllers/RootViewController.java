@@ -52,7 +52,6 @@ public class RootViewController implements Initializable, BOIGui{
 	@FXML
 	private GamesController gamesCtrl;
 
-
 	@FXML
 	private SharpsController sharpsCtrl;
 

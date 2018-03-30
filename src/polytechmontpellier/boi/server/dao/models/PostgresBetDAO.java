@@ -29,18 +29,20 @@ public class PostgresBetDAO extends DAO<Bet> implements BetDAO{
 	@Override
 	public ArrayList<Bet> findAll() {
 		// TODO Auto-generated method stub
-		String query = "select u.pseudo, a.pronostic, t.teamname, s.sportname, a.gameid from Advices a, Users u, Include i, Teams t, Sports s\n" + 
+		String query = "select u.pseudo, a.pronostic, t.teamname, s.sportname from Advices a, Users u, Include i, Teams t, Sports s\n" + 
 				"where a.userid = u.id\n" + 
 				"and i.gameid = a.gameid\n" + 
 				"and t.teamid = i.teamid\n" + 
 				"and t.sportid = s.sportid\n" + 
+				"order by a.adviceid\n"+
 				"\n";
 		
 		ResultSet betSet = this.excuteQuery(query);
 		ArrayList<Bet> bets = new ArrayList<Bet>();
 		try {
 			while(betSet.next()) {
-				bets.add(new Bet(betSet.getString(1),betSet.getString(2), betSet.getString(3), betSet.getString(4), betSet.getInt(5)));
+				System.out.println(betSet.getString(2));
+				bets.add(new Bet(betSet.getString(2),betSet.getString(3), betSet.getString(4), betSet.getString(1)));
 			}
 		}
 		catch(Exception e) {

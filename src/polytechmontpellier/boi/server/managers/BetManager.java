@@ -43,8 +43,11 @@ public class BetManager {
 		
 		while(i< bets.size() ) {
 			Bet b  = bets.get(i);
-			b.setTeam(b.getTeam() + " vs " + bets.get(i+1).getTeam());
-			processedBets.add(b);
+			if(b.getTeam() != bets.get(i+1).getTeam()) {
+				b.setTeam(b.getTeam() + " vs " + bets.get(i+1).getTeam());
+				processedBets.add(b);
+			}
+			
 			i+= 2;
 		}
 		return  processedBets;

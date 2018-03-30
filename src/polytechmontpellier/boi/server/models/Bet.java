@@ -6,15 +6,13 @@ public class Bet {
 	private String team;
 	private String sportName;
 	private String pseudo;
-	private int game;
 	
 	
-	public Bet(String pro, String team, String sport, String ps, int g) {
+	public Bet(String pro, String team, String sport, String ps) {
 		this.pronostic = pro;
 		this.team = team;
 		this.sportName = sport;
 		this.pseudo = ps;
-		this.game = g;
 	}
 	public String getPronostic() {
 		return pronostic;
@@ -47,11 +45,6 @@ public class Bet {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-	public int getGame() {
-		return game;
-	}
-	public void setGame(int game) {
-		this.game = game;
-	}
+	
 	
 }

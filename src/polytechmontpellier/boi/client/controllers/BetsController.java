@@ -53,6 +53,7 @@ public class BetsController implements Initializable {
 		for(Object o : array) {
 			JSONObject obj = (JSONObject) o;
 			try {
+				System.out.println((String)obj.get("pronostic"));
 				BetCell betCell = new BetCell((String)obj.get("team"),(String)obj.get("pronostic"),(String) obj.get("pseudo"),(String)obj.get("sport"));
 				betCells.add(betCell);
 			}catch(Exception e) {
@@ -75,7 +76,6 @@ public class BetsController implements Initializable {
 			
 		
 		bets.setItems(betCells);
-		bets.getColumns().addAll(team, sport, pseudo,pronostic);
 		
 	}
 	

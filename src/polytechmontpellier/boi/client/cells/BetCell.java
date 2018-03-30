@@ -6,30 +6,30 @@ import javafx.beans.property.StringProperty;
 public class BetCell {
 
 	private final StringProperty team;
-	private final StringProperty bet;
+	private final StringProperty pronostic;
 	private final StringProperty pseudo;
 	private final StringProperty sport;
 	
 	public BetCell(String teamName, String bet, String pseudo, String sport) {
 		this.team = new SimpleStringProperty(teamName);
-		this.bet = new SimpleStringProperty(bet);
+		this.pronostic = new SimpleStringProperty(bet);
 		this.pseudo = new SimpleStringProperty(pseudo);
 		this.sport = new SimpleStringProperty(sport);
 
 	}
 	
-	public StringProperty getTeam() {
-		return team;
+	public String getTeam() {
+		return team.getValue();
 	}
 	
-	public StringProperty getBet() {
-		return bet;
+	public String getPronostic() {
+		return pronostic.getValue();
 	}
-	public StringProperty getPseudo() {
-		return pseudo;
+	public String getPseudo() {
+		return pseudo.getValue();
 	}
 
-	public StringProperty getSport() {
-		return sport;
+	public String getSport() {
+		return sport.getValue();
 	}
 }
