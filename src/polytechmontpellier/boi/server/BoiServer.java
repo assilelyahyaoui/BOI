@@ -20,6 +20,7 @@ import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
 import polytechmontpellier.boi.server.models.Sharp;
 import polytechmontpellier.boi.server.models.User;
+import polytechmontpellier.boi.server.models.*;
 
 @SuppressWarnings("deprecation")
 public class BoiServer implements Observer{
@@ -115,9 +116,33 @@ public class BoiServer implements Observer{
 				}
 				break;
 			case "DISPLAY_ALL_SHARPS":
-				List<Sharp> sharps = facade.findAllFollowedSharps(); 
+					List<Sharp> sharps = facade.findAllFollowedSharps(); 
+				try {
+					System.out.println("boiServer TTTT " + msg);
+
+				
+					JSONObject json = new JSONObject();
+					json.put("action", "DISPLAY_ALL_SHARPS");
+					JSONArray array = new JSONArray();
+					for(Sharp s : sharps) {
+						JSONObject j = new JSONObject();
+						j.put("pseudo", s.getPseudo());
+						j.put("numberOfFollowers", s.getNumberOfFollowers());
+						j.put("numberOfBets", s.getNumberOfBets() );
+						System.out.println("boiServer handlemsgclient pseudo " + msg);
+						array.add(j);
+					}
+					json.put("data", array);
+					System.out.println("data " + data );
+					client.sendToClient(json.toString());
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				
 				break;
-			case "GET_RESULTS" :
+				
+				case "GET_RESULTS" :
 				List<Game> games = facade.getGames();
 
 				try {

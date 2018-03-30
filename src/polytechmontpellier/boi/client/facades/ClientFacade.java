@@ -160,6 +160,18 @@ public class ClientFacade implements Observer{
 		}
 	}
 
+	
+	public void makePremium() { 
+	    try { 
+	      JSONObject json = new JSONObject(); 
+	      json.put("action","MAKE_PREMIUM" );  
+	      this.observableClient.sendToServer(json.toString()); 
+	    } catch (IOException e) { 
+	      // TODO Auto-generated catch block 
+	      e.printStackTrace(); 
+	    } 
+	  } 
+	
 	/**
 	 * Business logic to handle messages sent by the server.
 	 * @param msg

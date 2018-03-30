@@ -6,9 +6,10 @@ import polytechmontpellier.boi.server.managers.BetManager;
 import polytechmontpellier.boi.server.managers.GameManager;
 import polytechmontpellier.boi.server.managers.UserManager;
 import polytechmontpellier.boi.server.models.Bet;
-import polytechmontpellier.boi.server.models.Sharp;
 import polytechmontpellier.boi.server.models.Game;
 import polytechmontpellier.boi.server.models.User;
+import polytechmontpellier.boi.server.models.*;
+
 
 public class ServerFacade{
 	
@@ -62,7 +63,7 @@ public class ServerFacade{
 	
 	public List<Bet> getBets(){
 		if(this.userManager.getUser().getRole().equals("PREMIUM")) {
-			return this.betManager.getBets();
+		  	return this.betManager.getBets();
 
 		}else {
 			return this.betManager.getBets(5);
@@ -78,5 +79,10 @@ public class ServerFacade{
 	public List<Game> getGames(){
 		return this.gameManager.getGames();
 	}
+	
+	  public List<Sharp> findAllFollowedSharps() {
+		    return this.userManager.findAllFollowedSharps();  
+		  }
+
 
 }
