@@ -55,9 +55,7 @@ public class ServerFacade{
 	 * @param password
 	 */
 	public boolean login(String pseudo, String password) {
-		
 		return this.userManager.login(pseudo, password);	
-		
 	}
 	
 	public List<Bet> getBets(){
@@ -68,7 +66,10 @@ public class ServerFacade{
 			return this.betManager.getBets(5);
 		}
 	}
-	
+	public boolean makePremium(String pseudo) {
+		return this.userManager.makePremium(pseudo);
+	}
+
 	public List<Game> getGames(){
 		return this.gameManager.getGames();
 	}

@@ -35,7 +35,6 @@ public class UserManager{
 	 * Constructor
 	 */
 	private UserManager() {
-		System.out.println("UserManager");
 		this.userDAO = DAOFacade.getInstance().getUserDAO();
 	}
 	
@@ -61,17 +60,17 @@ public class UserManager{
 	}
 	
 	public List<User> findAllFollowedSharps() {
-		System.out.println("User manager find allfollowedSharps ");
 
 		List<User> followedSharpList = ((UserDAO) userDAO).findAllFollowedSharps(this.currentUser.getPseudo());
-		System.out.println(this.currentUser.getPseudo());
-		System.out.println("followedSharpList");
-		System.out.println(followedSharpList);
 		return followedSharpList ; 
 				
 	}
 	
 	public User getUser() {
 		return this.currentUser;
+	}
+	
+	public boolean makePremium(String pseudo) {
+		return ((UserDAO) userDAO).makePremium(pseudo);
 	}
 }

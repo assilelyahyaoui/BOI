@@ -221,6 +221,11 @@ public class RootViewController implements Initializable, BOIGui{
 					betsCtrl.fillTableView(data);
 				}else if(action.equals("GET_RESULTS")) {
 					resultsCtrl.fillTableView(data);
+				}else if(action.equals("IS_PREMIUM")) {
+
+					facade.getBets();
+				}else if(action.equals("IS_NOT_PREMIUM")) {
+					System.out.println("Cannot make sharp premium.");
 				}
 				
 			}

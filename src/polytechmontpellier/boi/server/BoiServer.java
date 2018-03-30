@@ -135,10 +135,15 @@ public class BoiServer implements Observer{
 					e.printStackTrace();
 				}
 				
+			}else if(data.get("action").equals("MAKE_PREMIUM")) {
+				if(this.facade.makePremium(client.getInfo("pseudo"))) {
+					client.sendToClient("IS_PREMIUM");
+				}else {
+					client.sendToClient("IS_NOT_PREMIUM");
+				}
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Erreur JSON");
 			e.printStackTrace();
 		}
 	}

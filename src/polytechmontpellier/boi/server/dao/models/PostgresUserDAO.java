@@ -98,10 +98,6 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		query+="')";
 
 		ResultSet sharpSet = this.excuteQuery(query);
-		
-		System.out.println("PUDAO findAllFollowedSharps sharpSet");
-		System.out.println(sharpSet); 
-		
 		ArrayList<User> sharps = new ArrayList<User>();
 		
 		try {
@@ -110,13 +106,19 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 			}
 		}
 		catch(Exception e) {
-			System.out.println("postgresUserDAO catch de array ");
 			e.printStackTrace();
 		}
-    	System.out.println("postgresUserDAO sharps");
-		System.out.println(sharps);
 		
 		return sharps ; 
+	}
+
+	@Override
+	public boolean makePremium(String pseudo) {
+		// TODO Auto-generated method stub		
+		String query = "UPDATE Users SET role_id=(SELECT id FROM Users where label='PREMIUM') WHERE pseudo='"+ pseudo+"'";
+		this.excuteQuery(query);
+		return true;
+		
 	}
 
 }

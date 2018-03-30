@@ -14,6 +14,7 @@ public interface UserDAO {
 	 */
 	public User getUserByPseudo(String pseudo);
 	public List<User> findAllFollowedSharps(String pseudo);
+	public boolean makePremium(String pseudo);
 	
 	
 }
