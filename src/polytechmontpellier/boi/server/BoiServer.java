@@ -131,16 +131,17 @@ public class BoiServer implements Observer{
 					client.sendToClient(json.toString());
 					
 				}catch(Exception e) {
-					e.printStackTrace();
+		 			e.printStackTrace();
 				}
 				break;
 			default:
 				break;
-			}
+			} 
 		} 
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
 		
 /*		System.out.println("boiServer TTTT " + msg);
 		try {
