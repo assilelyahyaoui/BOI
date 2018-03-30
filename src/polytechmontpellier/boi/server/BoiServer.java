@@ -152,7 +152,6 @@ public class BoiServer implements Observer{
 		}
 	}
 		
-	}
 	
 	/**
 	   * Hook method called each time a new client connection is

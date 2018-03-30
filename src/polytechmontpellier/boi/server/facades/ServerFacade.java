@@ -7,6 +7,7 @@ import polytechmontpellier.boi.server.managers.GameManager;
 import polytechmontpellier.boi.server.managers.UserManager;
 import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
+import polytechmontpellier.boi.server.models.User;
 
 public class ServerFacade{
 	
@@ -70,6 +71,9 @@ public class ServerFacade{
 		return this.userManager.makePremium(pseudo);
 	}
 
+	public List<User> findAllFollowedSharps() {
+		return this.userManager.findAllFollowedSharps();
+	}
 	public List<Game> getGames(){
 		return this.gameManager.getGames();
 	}
