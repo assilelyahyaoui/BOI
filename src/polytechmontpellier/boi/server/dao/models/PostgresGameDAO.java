@@ -36,13 +36,14 @@ public class PostgresGameDAO extends DAO<Game> implements GameDAO {
 				"where g.gameid = i.gameid\n" + 
 				"and i.teamid = t.teamid\n" + 
 				"and g.gameid = i2.gameid\n" + 
-				"and i2.teamid = t2.teamid\n" ;
+				"and i2.teamid = t2.teamid\n" +
+				"and t.teamid != t2.teamid\n";
 		
 		ResultSet gameSet = this.excuteQuery(query);
 		ArrayList<Game> games = new ArrayList<Game>();
 		try {
 			while(gameSet.next()) {
-				DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+				DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 				String stringDate = df.format(gameSet.getDate(1));
 				System.out.println(gameSet.getDate(1)+ gameSet.getString(2) +  gameSet.getString(5));
 				games.add(new Game(stringDate,gameSet.getString(2), gameSet.getInt(3), gameSet.getInt(4), gameSet.getString(5)));

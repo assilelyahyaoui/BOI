@@ -25,22 +25,22 @@ public class ResultCell {
 
 	}
 	
-	public StringProperty getFirstTeam() {
-		return firstTeam;
+	public String getFirstTeam() {
+		return firstTeam.getValue();
 	}
 	
-	public StringProperty getSecondTeam() {
-		return secondTeam;
+	public String getSecondTeam() {
+		return secondTeam.getValue();
 	}
 	
-	public StringProperty getDate() {
-		return gameDate;
+	public String getGameDate() {
+		return gameDate.getValue();
 	}
-	public IntegerProperty getFirstScore() {
-		return firstScore;
+	public Integer getFirstScore() {
+		return firstScore.getValue();
 	}
 
-	public IntegerProperty getSecondScore() {
-		return secondScore;
+	public Integer getSecondScore() {
+		return secondScore.getValue();
 	}
 }

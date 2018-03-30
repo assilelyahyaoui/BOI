@@ -16,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import polytechmontpellier.boi.client.cells.BetCell;
 import polytechmontpellier.boi.client.cells.ResultCell;
 import polytechmontpellier.boi.client.facades.ClientFacade;
 
@@ -63,7 +62,7 @@ public class ResultsController implements Initializable {
 		}
 		
 		gameDate.setCellValueFactory(
-			   new PropertyValueFactory<ResultCell,Date>("gameDate")
+			   new PropertyValueFactory<ResultCell,String>("gameDate")
 		);
 		firstTeam.setCellValueFactory(
 		    new PropertyValueFactory<ResultCell,String>("firstTeam")
@@ -80,7 +79,6 @@ public class ResultsController implements Initializable {
 			);
 		
 		results.setItems(resultCells);
-		results.getColumns().addAll(gameDate, firstTeam, firstScore,secondScore,secondTeam);
 	}
 
 }

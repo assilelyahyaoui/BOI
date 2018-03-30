@@ -5,16 +5,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytechmontpellier.boi.client.controllers.ResultsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytechmontpellier.boi.client.controllers.ResultsController">
    <children>
       <Label layoutX="89.0" layoutY="41.0" text="Recent Game Results" />
-      <TableView fx:id="results" layoutX="145.0" layoutY="108.0" prefHeight="289.0" prefWidth="375.0">
+      <TableView fx:id="results" layoutX="38.0" layoutY="63.0" prefHeight="427.0" prefWidth="613.0">
         <columns>
-          <TableColumn fx:id="gameDate" prefWidth="75.0" text="Game Date" />
-          <TableColumn fx:id="firstTeam" prefWidth="75.0" text="Team 1" />
-            <TableColumn fx:id="firstScore" prefWidth="88.0" text="Team 1 Score" />
-            <TableColumn fx:id="secondScore" prefWidth="83.0" text="Team 2 Score" />
-            <TableColumn fx:id="secondTeam" prefWidth="54.0" text="Team 2" />
+          <TableColumn fx:id="gameDate" prefWidth="146.0" text="Game Date" />
+          <TableColumn fx:id="firstTeam" prefWidth="110.0" text="Team 1" />
+            <TableColumn fx:id="firstScore" prefWidth="101.0" text="Team 1 Score" />
+            <TableColumn fx:id="secondScore" prefWidth="112.0" text="Team 2 Score" />
+            <TableColumn fx:id="secondTeam" prefWidth="89.0" text="Team 2" />
         </columns>
       </TableView>
    </children>
