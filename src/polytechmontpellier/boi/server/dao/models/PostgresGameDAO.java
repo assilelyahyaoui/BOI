@@ -122,14 +122,16 @@ public class PostgresGameDAO extends DAO<Game> implements GameDAO {
 				"AND g.gamedate > ?";
 		try {
 			PreparedStatement ps = this.pgConnection.prepareStatement(query);
-			ps.setDate(1, (Date) new java.util.Date());
-			ResultSet gameSet = this.excuteQuery(query);
+			ps.setDate(1, new Date(System.currentTimeMillis()));
+			ResultSet gameSet = ps.executeQuery();
+			System.out.println("\n\n Query results");
 			while(gameSet.next()) {
-				System.out.println(gameSet.getDate(1)+ gameSet.getString(2) +  gameSet.getString(5));
-				Team home = new Team(gameSet.getString(2));
-				Team away = new Team(gameSet.getString(5));
-				games.add(new Game(home, away, gameSet.getInt(3), gameSet.getInt(4), gameSet.getDate(1)));
+				System.out.println(gameSet.getDate(1) + " " + gameSet.getString(2) + " " +  gameSet.getString(3) + " " + gameSet.getString(4) + " " +  gameSet.getString(5));
+				Team home = new Team(gameSet.getString(2), gameSet.getString(4), gameSet.getString(6));
+				Team away = new Team(gameSet.getString(3), gameSet.getString(5), gameSet.getString(6));
+				games.add(new Game(home, away, gameSet.getDate(1)));
 			}
+			System.out.println("\n\n");
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

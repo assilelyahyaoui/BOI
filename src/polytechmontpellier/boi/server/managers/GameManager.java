@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import polytechmontpellier.boi.server.dao.DAO;
+import polytechmontpellier.boi.server.dao.models.PostgresGameDAO;
 import polytechmontpellier.boi.server.facades.DAOFacade;
 import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
@@ -50,4 +51,10 @@ public class GameManager {
 		}
 		return  games;
 	}
+	
+	public List<Game> getFutureGames() {
+		ArrayList<Game> games = ((PostgresGameDAO) this.gameDAO).getFutureGames();
+		return  games;
+	}
+	
 }

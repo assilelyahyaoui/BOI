@@ -162,8 +162,31 @@ public class BoiServer implements Observer{
 						array.add(j);
 					}
 					json.put("data", array);
+					client.sendToClient(json.toString());
 					
-					System.out.println(json.toString());
+				}catch(Exception e) {
+		 			e.printStackTrace();
+				}
+				break;
+			case "GET_FUTURE_GAMES" :
+				List<Game> futureGames = facade.getFutureGames();
+
+				try {
+					JSONObject json = new JSONObject();
+					json.put("action", "GET_FUTURE_GAMES");
+					JSONArray array = new JSONArray();
+					
+					for(Game g : futureGames) {
+						JSONObject j = new JSONObject();
+						
+						j.put("date", g.getDate().toString());
+						j.put("teamHome", g.getTeamHome().getName());
+						j.put("teamAway", g.getTeamAway().getName());
+						j.put("location", g.getTeamHome().getLocation());
+						j.put("sport", g.getTeamHome().getSport());
+						array.add(j);
+					}
+					json.put("data", array);
 					client.sendToClient(json.toString());
 					
 				}catch(Exception e) {

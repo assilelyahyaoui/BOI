@@ -83,4 +83,9 @@ public class ServerFacade{
 
 
 
+
+	public List<Game> getFutureGames() {
+		return this.gameManager.getFutureGames();
+	}
+
 }

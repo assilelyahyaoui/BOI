@@ -136,6 +136,21 @@ public class ClientFacade implements Observer{
 			e.printStackTrace();
 		}
 	}
+	
+	public void getFutureGames(){
+		System.out.println("\n\n");
+		System.out.println("Get future games");
+		System.out.println("\n\n");
+		JSONObject json = new JSONObject();
+		try {
+			json.put("action", "GET_FUTURE_GAMES");
+			this.observableClient.sendToServer(json.toString());
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void displayAllFollowedSharps()  {
 		try {
 			JSONObject json = new JSONObject();
@@ -175,6 +190,7 @@ public class ClientFacade implements Observer{
 			System.out.println("client facade hndlemsg data " + json.get("data"));
 			this.boiGui.updateGUI((String) json.get("action"), json.get("data"));
 		}catch(Exception e) {
+			System.out.println("JSON parser error");
 			this.boiGui.updateGUI(msg, null);
 		}
 		

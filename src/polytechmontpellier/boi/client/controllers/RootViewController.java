@@ -166,6 +166,15 @@ public class RootViewController implements Initializable, BOIGui{
 		this.facade.getResults();
 	}
 	
+	public void displayFutureGames() {
+		System.out.println("\n\n");
+		System.out.println("Get future games");
+		System.out.println("\n\n");
+		container.getChildren().clear();
+		container.getChildren().setAll(this.gamesNode);
+		this.facade.getFutureGames();
+	}
+	
 	public void displayUpgrade() {
 		container.getChildren().clear();
 		container.getChildren().setAll(this.upgradeNode);
@@ -196,8 +205,10 @@ public class RootViewController implements Initializable, BOIGui{
 			@Override
 			public void handle(MouseEvent event) {
 				// TODO Auto-generated method stub
-			
-				displayGames();
+				System.out.println("\n\n");
+				System.out.println("Get future games");
+				System.out.println("\n\n");
+				displayFutureGames();
 			}	
 		});
 		this.resultsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -252,6 +263,10 @@ public class RootViewController implements Initializable, BOIGui{
 					betsCtrl.fillTableView(data);
 				}else if(action.equals("GET_RESULTS")) {
 					resultsCtrl.fillTableView(data);
+				}else if(action.equals("GET_FUTURE_GAMES")) {
+					System.out.println("Fetching future games");
+					System.out.println(data.toString());
+					gamesCtrl.fillTableView(data);
 				}else if(action.equals("IS_PREMIUM")) {
 
 					facade.getBets();
