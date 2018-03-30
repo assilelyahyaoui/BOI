@@ -136,7 +136,7 @@ public class BoiServer implements Observer{
 					client.sendToClient(json.toString());
 					
 				}catch(Exception e) {
-					e.printStackTrace();
+		 			e.printStackTrace();
 				}
 				break;
 			case"MAKE_PREMIUM" :
@@ -150,6 +150,7 @@ public class BoiServer implements Observer{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
 		
 	}
 	
