@@ -110,16 +110,24 @@ public class RootViewController implements Initializable, BOIGui{
 	}
 	
 	public void setLoadersAndControllers() {
-		this.betsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
-		this.betsCtrl = betsLoader.getController();
-		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
-		this.gamesCtrl = gamesLoader.getController();
-		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
-		this.resultsCtrl = resultsLoader.getController();
-		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/getAllSharps.fxml"));
-		this.sharpsCtrl = sharpsLoader.getController();
+		try {
+			this.betsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
+			this.betsNode = (Node) this.betsLoader.load();
+			this.betsCtrl = betsLoader.getController();
+			this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
+			this.gamesNode = (Node) this.gamesLoader.load();
+			this.gamesCtrl = gamesLoader.getController();
+			this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
+			this.resultsNode = (Node) this.resultsLoader.load();
+			this.resultsCtrl = resultsLoader.getController();
+			this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/getAllSharps.fxml"));
+			this.sharpsNode = (Node) this.sharpsLoader.load();
+			this.sharpsCtrl = sharpsLoader.getController();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
-
 	
 	public void displayBets() {
 		container.getChildren().clear();
