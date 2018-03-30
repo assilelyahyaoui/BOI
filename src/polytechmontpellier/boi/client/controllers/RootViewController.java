@@ -110,49 +110,23 @@ public class RootViewController implements Initializable, BOIGui{
 	}
 	
 	public void setLoadersAndControllers() {
-		this.betsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
-		this.betsCtrl = betsLoader.getController();
-		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
-		this.gamesCtrl = gamesLoader.getController();
-		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
-		this.resultsCtrl = resultsLoader.getController();
-		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/getAllSharps.fxml"));
-		this.sharpsCtrl = sharpsLoader.getController();
-	}
-	
-	public void displayBets() {
 		try {
+			this.betsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Bets.fxml"));
 			this.betsNode = (Node) this.betsLoader.load();
 			this.betsCtrl = betsLoader.getController();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
+			this.gamesNode = (Node) this.gamesLoader.load();
+			this.gamesCtrl = gamesLoader.getController();
+			this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
+			this.resultsNode = (Node) this.resultsLoader.load();
+			this.resultsCtrl = resultsLoader.getController();
+			this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/getAllSharps.fxml"));
+			this.sharpsNode = (Node) this.sharpsLoader.load();
+			this.sharpsCtrl = sharpsLoader.getController();
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		this.gamesLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Games.fxml"));
-		try {
-			this.gamesNode = (Node) this.gamesLoader.load();
-			this.gamesCtrl = gamesLoader.getController();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		this.resultsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Results.fxml"));
-		try {
-			this.resultsNode = (Node) this.resultsLoader.load();
-			this.resultsCtrl = resultsLoader.getController();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.sharpsLoader = new FXMLLoader(getClass().getResource("/polytechmontpellier/boi/client/view/Sharps.fxml"));
-		try {
-			this.sharpsNode = (Node) this.sharpsLoader.load();
-			this.sharpsCtrl = sharpsLoader.getController();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public void displayBets() {
