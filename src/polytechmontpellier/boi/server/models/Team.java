@@ -6,6 +6,10 @@ public class Team {
 	private String location;
 	private String sport;
 	
+	public Team(String name) {
+		this.name = name;
+	}
+	
 	public Team(String teamName, String teamLocation, String sport) {
 		this.setName(teamName);
 		this.setLocation(teamLocation);

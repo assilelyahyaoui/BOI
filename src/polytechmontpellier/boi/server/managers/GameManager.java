@@ -42,7 +42,7 @@ public class GameManager {
 		
 		while(i< games.size() ) {
 			Game g  = games.get(i);
-			System.out.print(g.getFirstTeam());
+			System.out.print(g.getTeamHome());
 		//	b.setTeam(b.getTeam() + " vs " + bets.get(i+1).getTeam());
 	//		processedBets.add(b);
 	//		i+= 2;
