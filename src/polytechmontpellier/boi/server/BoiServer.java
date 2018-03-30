@@ -16,8 +16,6 @@ import com.lloseng.ocsf.server.OriginatorMessage;
 import polytechmontpellier.boi.server.facades.ServerFacade;
 import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
-import polytechmontpellier.boi.server.models.Include;
-import polytechmontpellier.boi.server.models.Team;
 
 @SuppressWarnings("deprecation")
 public class BoiServer implements Observer{

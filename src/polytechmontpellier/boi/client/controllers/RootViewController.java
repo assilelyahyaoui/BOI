@@ -108,6 +108,7 @@ public class RootViewController implements Initializable, BOIGui{
 		this.gamesButton.setVisible(true);
 		this.resultsButton.setVisible(true);
 	}
+
 	
 	public void setLoadersAndControllers() {
 		try {

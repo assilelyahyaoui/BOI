@@ -61,7 +61,12 @@ public class ServerFacade{
 	}
 	
 	public List<Bet> getBets(){
-		return this.betManager.getBets();
+		if(this.userManager.getUser().getRole().equals("PREMIUM")) {
+			return this.betManager.getBets();
+
+		}else {
+			return this.betManager.getBets(5);
+		}
 	}
 	
 	public List<Game> getGames(){

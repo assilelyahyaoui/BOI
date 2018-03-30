@@ -37,15 +37,21 @@ public class BetManager {
 	}
 	
 	public List<Bet> getBets(){
+		return this.getBets(0);
+	}
+	public List<Bet> getBets(int nb){
 		ArrayList<Bet> bets = this.betDAO.findAll();
 		ArrayList<Bet> processedBets = new ArrayList<Bet>();
 		int i = 0;
-		
-		while(i< bets.size() ) {
+		int j = 0;
+		while(i< bets.size() && j < 5) {
 			Bet b  = bets.get(i);
 			if(b.getTeam() != bets.get(i+1).getTeam()) {
 				b.setTeam(b.getTeam() + " vs " + bets.get(i+1).getTeam());
 				processedBets.add(b);
+				if(nb > 0) {
+					j++;
+				}
 			}
 			
 			i+= 2;
