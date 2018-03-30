@@ -174,6 +174,7 @@ public class RootViewController implements Initializable, BOIGui{
 	public void displayResults() {
 		container.getChildren().clear();
 		container.getChildren().setAll(this.resultsNode);
+		this.facade.getResults();
 	}
 	
 	public void setButtonListener() {
@@ -243,7 +244,10 @@ public class RootViewController implements Initializable, BOIGui{
 
 				}else if(action.equals("GET_BETS")) {
 					betsCtrl.fillTableView(data);
+				}else if(action.equals("GET_RESULTS")) {
+					resultsCtrl.fillTableView(data);
 				}
+				
 			}
 		});		
 	}
