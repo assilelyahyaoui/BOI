@@ -137,6 +137,7 @@ public class ClientFacade implements Observer{
 			e.printStackTrace();
 		}
 	}
+	
 
 	/**
 	 * Business logic to handle messages sent by the server.
