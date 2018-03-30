@@ -70,4 +70,8 @@ public class UserManager{
 		return followedSharpList ; 
 				
 	}
+	
+	public User getUser() {
+		return this.currentUser;
+	}
 }

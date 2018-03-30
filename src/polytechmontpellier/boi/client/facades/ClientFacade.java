@@ -138,6 +138,9 @@ public class ClientFacade implements Observer{
 		}
 	}
 	
+	public void getGames() {
+		//TODO: récupérer la liste de tous les matchs
+	}
 
 	/**
 	 * Business logic to handle messages sent by the server.

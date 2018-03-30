@@ -118,6 +118,7 @@ public class RootViewController implements Initializable, BOIGui{
 		this.resultsButton.setVisible(true);
 		this.upgradeButton.setVisible(true);
 	}
+
 	
 	public void setLoadersAndControllers() {
 		try {

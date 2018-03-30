@@ -16,8 +16,6 @@ import com.lloseng.ocsf.server.OriginatorMessage;
 import polytechmontpellier.boi.server.facades.ServerFacade;
 import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
-import polytechmontpellier.boi.server.models.Include;
-import polytechmontpellier.boi.server.models.Team;
 
 @SuppressWarnings("deprecation")
 public class BoiServer implements Observer{
@@ -77,8 +75,9 @@ public class BoiServer implements Observer{
 		
 		try {
 			JSONObject data = (JSONObject) parser.parse((String) msg);
-
-			if(data.get("action").equals("LOGIN")) { 
+			
+			switch (data.get("action").toString()) {
+			case "LOGIN":
 				// User wants to login
 				if(this.facade.login((String)data.get("pseudo"),(String)data.get("password"))) {
 					//credentials are good.
@@ -87,10 +86,9 @@ public class BoiServer implements Observer{
 					client.sendToClient("LOGGED_IN");
 				}else {
 					client.sendToClient("BAD_CREDENTIALS");
-				
 				}
-
-			}else if(data.get("action").equals("GET_BETS")) {
+				break;
+			case "GET_BETS":
 				List<Bet> bets = facade.getBets();
 				try {
 					JSONObject json = new JSONObject();
@@ -111,10 +109,9 @@ public class BoiServer implements Observer{
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
-				
-			}else if(data.get("action").equals("GET_RESULTS")) {
-				System.out.println("test result");
-				List<Game> games = facade.getGames();
+				break;
+			case "DISPLAY_ALL_SHARPS":
+				List<User> sharps = facade.findAllFollowedSharps(); 
 				try {
 					JSONObject json = new JSONObject();
 					json.put("action", "GET_RESULTS");
@@ -136,10 +133,29 @@ public class BoiServer implements Observer{
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
-				
+				break;
+			default:
+				break;
 			}
-					
-				
+		} 
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+/*		System.out.println("boiServer TTTT " + msg);
+		try {
+			JSONObject data = (JSONObject) parser.parse((String) msg);
+			System.out.println("boiServer avant le if  " + data.get("action").equals("DISPLAY_ALL_SHARPS"));
+			
+			if( data.get("action").equals("DISPLAY_ALL_SHARPS")) { 
+					System.out.println("boiserverdansleif");
+					List<User> sharp = facade.findAllFollowedSharps(); 
+				client.sendToClient("DISPLAY_ALL_SHARPS");
+
+				}else {
+					client.sendToClient("BAD_CREDENTIALS");
+				}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Erreur JSON");

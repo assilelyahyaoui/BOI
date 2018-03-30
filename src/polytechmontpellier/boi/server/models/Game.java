@@ -1,62 +1,51 @@
+	private int firstScore;
+	private int secondScore;
 package polytechmontpellier.boi.server.models;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Game {
-	private String date;
-	private String firstTeam;
-	private int firstScore;
-	private String secondTeam;
-	private int secondScore;
 	
-	
-	public Game(String date, String firstTeam, int firstScore, int secondScore, String secondTeam) {
-		this.date = date;
-		this.setFirstTeam(firstTeam);
-		this.setFirstScore(firstScore);
-		this.setSecondScore(secondScore);
-		this.setSecondTeam(secondTeam);
+	private Team teamHome;
+	private Team teamAway;
+	private Date date;
+
+	public Game(Team home, Team away, Date date) {
+		this.setTeamHome(home);
+		this.setTeamAway(away);
+		this.setDate(date);
 	}
 
-	public String getDate() {
+	public Team getTeamHome() {
+		return teamHome;
+	}
+
+	public void setTeamHome(Team teamHome) {
+		this.teamHome = teamHome;
+	}
+
+	public Team getTeamAway() {
+		return teamAway;
+	}
+
+	public void setTeamAway(Team teamAway) {
+		this.teamAway = teamAway;
+	}
+
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
-
-	public String getFirstTeam() {
-		return firstTeam;
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.teamHome.getName());
+		sb.append(" - ");
+		sb.append(this.teamAway.getName());
+		return sb.toString();
 	}
-
-	public void setFirstTeam(String firstTeam) {
-		this.firstTeam = firstTeam;
-	}
-
-	public int getFirstScore() {
-		return firstScore;
-	}
-
-	public void setFirstScore(int firstScore) {
-		this.firstScore = firstScore;
-	}
-
-	public String getSecondTeam() {
-		return secondTeam;
-	}
-
-	public void setSecondTeam(String secondTeam) {
-		this.secondTeam = secondTeam;
-	}
-
-	public int getSecondScore() {
-		return secondScore;
-	}
-
-	public void setSecondScore(int secondScore) {
-		this.secondScore = secondScore;
-	}
-
-
+	
 }
