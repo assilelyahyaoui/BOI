@@ -80,9 +80,7 @@ public class ServerFacade{
 		return this.gameManager.getGames();
 	}
 	
-	  public List<Sharp> findAllFollowedSharps() {
-		    return this.userManager.findAllFollowedSharps();  
-		  }
+
 
 
 }
