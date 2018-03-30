@@ -152,6 +152,7 @@ public class RootViewController implements Initializable, BOIGui{
 	public void displaySharps() {
 		container.getChildren().clear();
 		container.getChildren().setAll(this.sharpsNode);
+		this.facade.getSharps(); 
 	}
 	
 	public void displayGames() {
@@ -246,6 +247,8 @@ public class RootViewController implements Initializable, BOIGui{
 					text.backgroundProperty().set(new Background(new BackgroundFill(Color.web("#f44242"), null, null)));
 
 				}else if(action.equals("GET_BETS")) {
+					System.out.println(data);
+					System.out.println(betsCtrl);
 					betsCtrl.fillTableView(data);
 				}else if(action.equals("GET_RESULTS")) {
 					resultsCtrl.fillTableView(data);
@@ -254,6 +257,13 @@ public class RootViewController implements Initializable, BOIGui{
 					facade.getBets();
 				}else if(action.equals("IS_NOT_PREMIUM")) {
 					System.out.println("Cannot make sharp premium.");
+					
+					
+				}else if(action.equals("DISPLAY_ALL_SHARPS")) {
+					System.out.println("rootViewC , run()");
+					System.out.println(data);
+					System.out.println(sharpsCtrl);
+					sharpsCtrl.fillTableView(data);
 				}
 				
 			}

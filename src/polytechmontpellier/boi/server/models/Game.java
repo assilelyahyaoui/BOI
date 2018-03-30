@@ -10,8 +10,7 @@ public class Game {
 	private int firstScore;
 	private int secondScore;
 	private Date date;
-	private int firstScore;
-	private int secondScore;
+
 	
 	public Game(Team home, Team away, Date date) {
 		this.teamHome = home;

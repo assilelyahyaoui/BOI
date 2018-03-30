@@ -1,5 +1,6 @@
 package polytechmontpellier.boi.client.cells;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class SharpCell {
@@ -17,37 +18,37 @@ public class SharpCell {
 
 	}
 	
-	public SharpCell(StringProperty username) {
-		this.setUsername(username);
-
+	public SharpCell(String username) {
+		this.username = new SimpleStringProperty(username);
 	}
 
-	public StringProperty getUsername() {
-		return username;
+	public String getUsername() {
+		
+		return this.username.getValue();
 	}
 
 	public void setUsername(StringProperty username) {
 		this.username = username;
 	}
 
-	public StringProperty getNumberOfBets() {
-		return numberOfBets;
+	public String getNumberOfBets() {
+		return this.numberOfBets.getValue();
 	}
 
 	public void setNumberOfBets(StringProperty numberOfBets) {
 		this.numberOfBets = numberOfBets;
 	}
 
-	public StringProperty getAccuracy() {
-		return accuracy;
+	public String getAccuracy() {
+		return this.accuracy.getValue();
 	}
 
 	public void setAccuracy(StringProperty accuracy) {
 		this.accuracy = accuracy;
 	}
 
-	public StringProperty getNumberOfFollowers() {
-		return numberOfFollowers;
+	public String getNumberOfFollowers() {
+		return this.numberOfFollowers.getValue();
 	}
 
 	public void setNumberOfFollowers(StringProperty numberOfFollowers) {

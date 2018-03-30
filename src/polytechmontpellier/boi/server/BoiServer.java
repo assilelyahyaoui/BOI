@@ -16,7 +16,6 @@ import com.lloseng.ocsf.server.OriginatorMessage;
 import polytechmontpellier.boi.server.facades.ServerFacade;
 import polytechmontpellier.boi.server.models.Bet;
 import polytechmontpellier.boi.server.models.Game;
-import polytechmontpellier.boi.server.models.User;
 
 @SuppressWarnings("deprecation")
 public class BoiServer implements Observer{
@@ -112,7 +111,7 @@ public class BoiServer implements Observer{
 				}
 				break;
 			case "DISPLAY_ALL_SHARPS":
-				List<User> sharps = facade.findAllFollowedSharps(); 
+				//List<User> sharps = facade.findAllFollowedSharps(); 
 				break;
 			case "GET_RESULTS" :
 				List<Game> games = facade.getGames();
@@ -151,25 +150,6 @@ public class BoiServer implements Observer{
 			e.printStackTrace();
 		}
 		
-/*		System.out.println("boiServer TTTT " + msg);
-		try {
-			JSONObject data = (JSONObject) parser.parse((String) msg);
-			System.out.println("boiServer avant le if  " + data.get("action").equals("DISPLAY_ALL_SHARPS"));
-			
-			if( data.get("action").equals("DISPLAY_ALL_SHARPS")) { 
-					System.out.println("boiserverdansleif");
-					List<User> sharp = facade.findAllFollowedSharps(); 
-				client.sendToClient("DISPLAY_ALL_SHARPS");
-
-				}else {
-					client.sendToClient("BAD_CREDENTIALS");
-				}
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
 	}
 	
 	/**

@@ -32,8 +32,7 @@ public class UpgradeController implements Initializable {
 			@Override
 			public void handle(MouseEvent event) {
 				// TODO Auto-generated method stub
-			
-			upgradePremium();
+				upgradePremium();
 			}	
 		});
 	}
