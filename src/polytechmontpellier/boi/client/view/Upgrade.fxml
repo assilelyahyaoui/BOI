@@ -6,9 +6,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytechmontpellier.boi.client.controllers.UpgradeController">
    <children>
-      <Label layoutX="203.0" layoutY="142.0" text="normal user, upgrade to see more bets">
+      <Label fx:id="statusLabel" layoutX="203.0" layoutY="142.0" text="normal user, upgrade to see more bets">
          <font>
             <Font size="23.0" />
          </font>

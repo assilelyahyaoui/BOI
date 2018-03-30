@@ -90,13 +90,14 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
         return null;
 	}
 
+	/*
 	@Override
 	public List<Sharp> findAllFollowedSharps(String pseudo) {
 		// TODO Auto-generated method stub
 		System.out.println("PostgresUsereDAO finndALLfollowed vide");
 		return null;
 	}
-
+*/
 	
 	/*public List<Sharp> findAllFollowedSharps(String pseudo) {
 		// TODO Auto-generated method stub
@@ -129,7 +130,7 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		
 		return sharps ; 
 	}
-
+*/
 	@Override
 	public boolean makePremium(String pseudo) {
 		// TODO Auto-generated method stub		
@@ -137,6 +138,12 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		this.excuteQuery(query);
 		return true;
 		
+	}
+
+	@Override
+	public List<User> findAllFollowedSharps(String pseudo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

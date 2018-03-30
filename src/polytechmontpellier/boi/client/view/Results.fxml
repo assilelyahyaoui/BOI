@@ -4,10 +4,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytechmontpellier.boi.client.controllers.ResultsController">
    <children>
-      <Label layoutX="89.0" layoutY="41.0" text="Recent Game Results" />
+      <Label layoutX="38.0" layoutY="22.0" text="Recent Game Results">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
       <TableView fx:id="results" layoutX="38.0" layoutY="63.0" prefHeight="427.0" prefWidth="613.0">
         <columns>
           <TableColumn fx:id="gameDate" prefWidth="146.0" text="Game Date" />
