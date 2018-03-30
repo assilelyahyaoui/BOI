@@ -1,39 +1,39 @@
 package polytechmontpellier.boi.server.models;
 
 public class Team {
+	
 	private String name;
 	private String location;
-	private int sport;
+	private String sport;
+	
+	public Team(String teamName, String teamLocation, String sport) {
+		this.setName(teamName);
+		this.setLocation(teamLocation);
+		this.setSport(sport);
+	}
 
-		
-		
-		public Team(String name, String location, int sport) {
-			this.name = name;
-			this.location = location;
-			this.sport = sport;
-		}
+	public String getName() {
+		return name;
+	}
 
-		public String getName() {
-			return name;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		public void setName(String name) {
-			this.name = name;
-		}
-		
-		public String getLocation() {
-			return location;
-		}
+	public String getLocation() {
+		return location;
+	}
 
-		public void setLocation(String location) {
-			this.location = location;
-		}
-		
-		public int getSport() {
-			return sport;
-		}
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
-		public void setSport(int sport) {
-			this.sport = sport;
-		}
+	public String getSport() {
+		return sport;
+	}
+
+	public void setSport(String sport) {
+		this.sport = sport;
+	}
+
 }
