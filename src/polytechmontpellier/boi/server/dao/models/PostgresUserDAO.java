@@ -99,4 +99,10 @@ public class PostgresUserDAO extends DAO<User> implements UserDAO {
 		
 	}
 
+	@Override
+	public List<User> findAllFollowedSharps(String pseudo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

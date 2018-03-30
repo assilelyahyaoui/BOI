@@ -1,6 +1,8 @@
 package polytechmontpellier.boi.server;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -125,11 +127,12 @@ public class BoiServer implements Observer{
 					
 					for(Game g : games) {
 						JSONObject j = new JSONObject();
-						
-						j.put("date", g.getDate());
-						j.put("firstTeam", g.getTeamHome());
+						DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+						String reportDate = df.format(g.getDate());
+						j.put("date", reportDate);
+						j.put("firstTeam", g.getTeamHomeSTR());
 						j.put("firstScore", g.getFirstScore());
-						j.put("secondTeam", g.getTeamAway());
+						j.put("secondTeam", g.getTeamAwaySTR());
 						j.put("secondScore", g.getSecondScore());
 						array.add(j);
 					}

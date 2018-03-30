@@ -30,12 +30,20 @@ public class Game {
 		return teamHome;
 	}
 
+	public String getTeamHomeSTR() {
+		return teamHome.getName();
+	}
+	
 	public void setTeamHome(Team teamHome) {
 		this.teamHome = teamHome;
 	}
 
 	public Team getTeamAway() {
 		return teamAway;
+	}
+	
+	public String getTeamAwaySTR() {
+		return teamAway.getName();
 	}
 
 	public void setTeamAway(Team teamAway) {
